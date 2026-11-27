@@ -1,8 +1,43 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Azrin Freeman</title></head>
-<body style="font:16px/1.6 system-ui,sans-serif;max-width:40rem;margin:3rem auto;padding:0 1.25rem">
-<h1>Azrin Freeman</h1>
-<p>Projects:</p>
-<ul><li><a href="BetterNotes/">BetterNotes</a>, a free, open-source notes app for Windows (<a href="BetterNotes/privacy.html">privacy policy</a>)</li></ul>
-</body></html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azrin Amran — Software Developer | Mobile, Backend APIs &amp; Interactive Apps</title>
+    <meta
+      name="description"
+      content="Portfolio of Azrin Amran, a Malaysia-based software developer building Flutter mobile apps, PHP/Laravel APIs, Stripe integrations, and Unity/AI interactive learning prototypes."
+    />
+    <meta property="og:title" content="Azrin Amran — Software Developer" />
+    <meta
+      property="og:description"
+      content="Mobile apps, PHP/Laravel REST APIs, Stripe workflows, and interactive Unity/AI prototypes built and shipped fast."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://azrinfreeman.github.io/" />
+    <meta property="og:image" content="https://azrinfreeman.github.io/media/posters/evergreen.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var theme = saved === 'light' ? 'light' : 'dark';
+          var root = document.documentElement;
+          root.classList.remove('light', 'dark');
+          root.classList.add(theme);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
