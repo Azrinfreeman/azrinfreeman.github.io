@@ -65,6 +65,10 @@
   .divider { border-color: var(--border-subtle); }
   .panel { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-panel); }
   .media-stage { background: var(--media-matte); border-radius: var(--radius-control); }
+  .live-demo-frame { display: block; height: clamp(18rem, 62dvh, 37rem); }
+  .live-demo-phone .live-demo-frame { height: clamp(20rem, 70dvh, 43rem); }
+  .live-demo-stage:fullscreen { display: flex; flex-direction: column; max-width: none; margin: 0; }
+  .live-demo-stage:fullscreen .live-demo-frame { flex: 1; min-height: 0; }
 
   .button, .choice {
     @apply inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2 text-sm font-semibold;
@@ -95,7 +99,7 @@
   }
 
   .text-link:hover { text-decoration-thickness: 2px; }
-  .estimator-input {
+  .estimator-input, .field-input {
     @apply min-h-11 max-w-full px-3 py-2;
     background: var(--bg-surface);
     border: 1px solid var(--border-control);

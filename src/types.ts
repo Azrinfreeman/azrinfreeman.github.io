@@ -5,6 +5,7 @@ export type AudienceMode = 'client' | 'researcher' | 'recruiter';
 export type ProjectCategory = 'all' | 'mobile' | 'backend' | 'edtech' | 'tools';
 
 export type Currency = 'RM' | 'USD';
+export type DemoEmbed = 'web' | 'flutter' | 'unity' | 'playground';
 
 export type EstimatorProjectType =
   | 'api-stripe'
@@ -44,6 +45,8 @@ export interface ProjectItem {
   releaseTag?: string;
   liveUrl?: string;
   liveLabel?: string;
+  embedType?: DemoEmbed;
+  mobileOk?: boolean;
   similarEstimateType: EstimatorProjectType;
   aiDirectedNote?: string;
 }

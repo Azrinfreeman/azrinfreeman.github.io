@@ -52,6 +52,8 @@ jobs:
         run: npm run sync
 
       - name: Build
+        env:
+          VITE_STRIPE_DEMO_WORKER: ${{ vars.STRIPE_DEMO_WORKER }}
         run: npm run build
 
       - name: Setup Pages

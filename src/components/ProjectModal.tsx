@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
 import type { EstimatorProjectType, ProjectItem } from '../types';
+import { LiveProjectDemo } from './LiveProjectDemo';
 import { ProjectCardVisual } from './ProjectCardVisual';
 
 interface ProjectModalProps {
@@ -12,12 +13,15 @@ interface ProjectModalProps {
 export function ProjectModal({ project, onClose, onEstimateSimilar }: ProjectModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const [mediaTab, setMediaTab] = useState<'video' | 'gallery'>(project.videoUrl ? 'video' : 'gallery');
+  const [mediaTab, setMediaTab] = useState<'video' | 'gallery' | 'live'>(project.videoUrl ? 'video' : 'gallery');
   const [activeShotIndex, setActiveShotIndex] = useState(0);
   const hasVideo = Boolean(project.videoUrl);
   const hasGallery = Boolean(project.gallery?.length);
+  const liveDemoUrl = project.embedType ? project.liveUrl : undefined;
+  const showLive = Boolean(liveDemoUrl) && mediaTab === 'live';
   const showVideo = hasVideo && mediaTab === 'video';
-  const displayedShot = showVideo ? undefined : project.gallery?.[activeShotIndex];
+  const displayedShot = mediaTab === 'gallery' ? project.gallery?.[activeShotIndex] : undefined;
+  const showMediaChoices = (hasVideo && hasGallery) || Boolean(liveDemoUrl);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -69,13 +73,22 @@ export function ProjectModal({ project, onClose, onEstimateSimilar }: ProjectMod
         </header>
 
         <div className="p-4 sm:p-6">
-          {hasVideo && hasGallery && (
+          {showMediaChoices && (
             <div className="mb-3 flex flex-wrap gap-2" role="group" aria-label="Project media">
-              <button type="button" className="choice" aria-pressed={mediaTab === 'video'} onClick={() => setMediaTab('video')}>Video</button>
-              <button type="button" className="choice" aria-pressed={mediaTab === 'gallery'} onClick={() => setMediaTab('gallery')}>Screenshots</button>
+              {hasVideo && <button type="button" className="choice" aria-pressed={mediaTab === 'video'} onClick={() => setMediaTab('video')}>Video</button>}
+              {hasGallery && <button type="button" className="choice" aria-pressed={mediaTab === 'gallery'} onClick={() => setMediaTab('gallery')}>Screenshots</button>}
+              {liveDemoUrl && <button type="button" className="choice" aria-pressed={showLive} onClick={() => setMediaTab('live')}>Live demo</button>}
             </div>
           )}
 
+          {showLive && liveDemoUrl && (
+            <LiveProjectDemo
+              title={project.title}
+              url={liveDemoUrl}
+              desktopOnly={project.mobileOk === false || (project.mobileOk === undefined && project.embedType === 'unity')}
+              onWatchVideo={hasVideo ? () => setMediaTab('video') : undefined}
+            />
+          )}
           {showVideo && (
             <video
               src={project.videoUrl}
@@ -107,7 +120,7 @@ export function ProjectModal({ project, onClose, onEstimateSimilar }: ProjectMod
               </div>
             </figure>
           )}
-          {!showVideo && !displayedShot && project.posterUrl && (
+          {!showLive && !showVideo && !displayedShot && project.posterUrl && (
             <div className="media-stage aspect-video overflow-hidden">
               <ProjectCardVisual project={project} />
             </div>

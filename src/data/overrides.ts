@@ -324,6 +324,7 @@ export const PROJECT_OVERRIDES: Record<string, ProjectOverride> = {
     aiDirectedNote:
       'Built by directing AI coding agents, then personally reviewed and verified across mobile and desktop viewports.',
     liveUrl: 'https://azrinfreeman.github.io/graduation-flower-card/',
+    embedType: 'web',
     liveLabel: 'Live Web Demo',
     similarEstimateType: 'web-laravel',
   },

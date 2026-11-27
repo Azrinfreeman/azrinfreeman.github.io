@@ -443,6 +443,25 @@ async function main() {
         repoConfig = {};
       }
     }
+    if (!repoConfig || typeof repoConfig !== 'object' || Array.isArray(repoConfig)) {
+      repoConfig = {};
+    }
+
+    let liveUrl;
+    for (const candidate of [repoConfig.liveUrl, repo.homepage]) {
+      if (typeof candidate !== 'string') {
+        continue;
+      }
+      try {
+        const url = new URL(candidate);
+        if (url.protocol === 'https:' && !url.username && !url.password) {
+          liveUrl = url.href;
+          break;
+        }
+      } catch {
+        // Ignore malformed URLs from repository metadata.
+      }
+    }
 
     const readmeMd =
       readmeMeta && readmeMeta.content
@@ -536,8 +555,10 @@ async function main() {
       repoUrl: repo.html_url,
       releaseUrl: releaseData?.html_url || undefined,
       releaseTag: releaseData?.tag_name || undefined,
-      liveUrl: repoConfig.liveUrl || (repo.homepage && repo.homepage.startsWith('http') ? repo.homepage : undefined),
-      liveLabel: repoConfig.liveLabel || undefined,
+      liveUrl,
+      liveLabel: typeof repoConfig.liveLabel === 'string' ? sanitizeText(repoConfig.liveLabel) : undefined,
+      embedType: ['web', 'flutter', 'unity', 'playground'].includes(repoConfig.embedType) ? repoConfig.embedType : undefined,
+      mobileOk: typeof repoConfig.mobileOk === 'boolean' ? repoConfig.mobileOk : undefined,
       primaryLanguage: repo.language || undefined,
       updatedAt: repo.pushed_at || undefined,
     });
