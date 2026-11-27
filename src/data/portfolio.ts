@@ -18,7 +18,7 @@ export const PROFILE = {
   name: 'Azrin Amran',
   handle: 'Azrinfreeman',
   location: 'Kota Bharu, Kelantan, Malaysia',
-  timezone: 'GMT+8 · Remote worldwide',
+  timezone: 'GMT+8',
   relocationNote: 'Ready to relocate anywhere in Malaysia (including Klang Valley / PJ)',
   phoneDisplay: '+60 14-544 8481',
   whatsappNumber: '60145448481',
@@ -36,10 +36,9 @@ export const AUDIENCE_PRESETS: AudiencePreset[] = [
   {
     id: 'client',
     label: 'Business / Freelance Client',
-    eyebrow: 'Freelance & Contract Engineering',
-    headline: 'I build mobile apps, backend APIs, and interactive software — and ship working prototypes fast.',
+    headline: 'Mobile apps and backend APIs',
     subcopy:
-      'Need a Flutter app connected to Laravel, a Stripe subscription backend, store publishing fixes, or a custom web/desktop tool? Watch real working demos below and get a clear fixed-scope quote.',
+      'I build Flutter apps, Laravel APIs and custom web or desktop tools.',
     primaryCtaLabel: 'Estimate a Project',
     primaryCtaAction: 'estimate',
     secondaryCtaLabel: 'WhatsApp Directly',
@@ -47,18 +46,17 @@ export const AUDIENCE_PRESETS: AudiencePreset[] = [
       "Hi Azrin, I saw your portfolio and I'd like to discuss a software project."
     )}`,
     highlightPoints: [
-      'PHP / Laravel REST APIs, MySQL & Stripe verification',
-      'Flutter Android/iOS builds & Play Store / App Store publishing',
-      'Video staging demo before final handover',
+      'Stripe billing and server-side verification',
+      'Play Store and App Store release fixes',
+      'Staging demo before handover',
     ],
   },
   {
     id: 'researcher',
     label: 'PhD / EdTech Researcher',
-    eyebrow: 'Academic & Learning Prototypes',
-    headline: 'Interactive Unity 2D/3D, AR & Malay/English AI prototypes built for research studies and classrooms.',
+    headline: 'Unity and AR prototypes for education',
     subcopy:
-      'I have built virtual science labs, Vuforia AR math activities, and OpenAI-guided learning tutors for Malaysian PhD researchers and education teams — tested and ready for participant trials.',
+      'I build virtual science labs, Vuforia AR math activities and Malay and English AI tutors for Malaysian researchers and education teams.',
     primaryCtaLabel: 'See EdTech & AR Demos',
     primaryCtaAction: 'edtech',
     secondaryCtaLabel: 'Scope Your Prototype',
@@ -72,8 +70,7 @@ export const AUDIENCE_PRESETS: AudiencePreset[] = [
   {
     id: 'recruiter',
     label: 'Hiring Manager',
-    eyebrow: 'Full-Time & Contract Roles',
-    headline: 'Software developer with ~3 years full-time and ~5 years freelance shipping web, mobile & Unity apps.',
+    headline: 'Software developer for web, mobile and Unity',
     subcopy:
       'Former Software / Unity Developer Officer at Hanana Academy (Jan 2024 – Nov 2026) and freelance Unity, Flutter & PHP/Laravel developer (Techies Inc 2019–2024 & independent contracts since 2018). Based in Kota Bharu, available immediately, and ready to relocate anywhere in Malaysia.',
     primaryCtaLabel: 'View Resume (PDF)',
@@ -81,9 +78,9 @@ export const AUDIENCE_PRESETS: AudiencePreset[] = [
     secondaryCtaLabel: 'View LinkedIn',
     secondaryCtaHref: PROFILE.linkedinUrl,
     highlightPoints: [
-      'B.IT (Game Technology), UTeM · Diploma in IT, UTHM',
+      'B.IT (Game Technology) from UTeM and a Diploma in IT from UTHM',
       'PHP/Laravel, MySQL, Flutter/Dart, Unity/C#, Stripe & OpenAI APIs',
-      'Available immediately · Remote, hybrid, or relocate to Klang Valley',
+      'Available immediately for remote or hybrid work, including relocation to Klang Valley',
     ],
   },
 ];
@@ -186,27 +183,11 @@ function buildMergedProjects(): ProjectItem[] {
 
 export const PROJECTS: ProjectItem[] = buildMergedProjects();
 
-export const PROOF_METRICS = [
-  {
-    value: '3 yrs FT + 5 yrs Freelance',
-    label: 'Production web, mobile & Unity apps since 2019',
-  },
-  {
-    value: `${PROJECTS.length}+ Public Demos`,
-    label: 'Auto-synced from GitHub with trailers, releases & code',
-  },
-  {
-    value: 'AI-Accelerated + Tested',
-    label: 'Rapid agent-assisted drafts, personally reviewed & tested',
-  },
-];
-
 export const COMMERCIAL_HIGHLIGHTS: CommercialHighlightItem[] = [
   {
     id: 'comm-iktisass',
     title: 'Talent Management Application (IKTISASS)',
-    roleMeta: 'Freelance Contract · 2025',
-    badge: 'Closed-Source Client Delivery',
+    roleMeta: 'Freelance contract (2025)',
     summary:
       'Built the Flutter mobile application and the Laravel REST API connecting it to an existing Laravel and MySQL-backed web platform, extending the website into a mobile-first app with administrator/user role functionality and responsive data dashboards.',
     stack: ['Flutter', 'Dart', 'Laravel REST API', 'MySQL', 'Role-Based Dashboards'],
@@ -215,8 +196,7 @@ export const COMMERCIAL_HIGHLIGHTS: CommercialHighlightItem[] = [
   {
     id: 'comm-hanana-games',
     title: 'Primary-School Web & Android Learning Games (Hanana Academy)',
-    roleMeta: 'Software / Unity Developer Officer · Jan 2024 – Nov 2026',
-    badge: 'Closed-Source Employer Work',
+    roleMeta: 'Software / Unity Developer Officer (Jan 2024 – Nov 2026)',
     summary:
       'Developed Unity/C# educational applications and shipped browser and signed Android learning games for Malaysian primary pupils using Phaser, Vite, and Capacitor — including an offline-first PWA and Malay/English voice-overs generated with Microsoft Edge neural TTS (msedge-tts).',
     stack: ['Unity / C#', 'Phaser', 'Vite', 'Capacitor Android', 'PWA (Offline-First)', 'msedge-tts'],

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Calculator, Check, Copy, Mail, MessageSquare } from 'lucide-react';
 import { ESTIMATOR_OPTIONS, PROFILE } from '../data/portfolio';
 import type { Currency, DesignReadiness, EstimatorProjectType, EstimatorTier } from '../types';
 
@@ -10,10 +9,10 @@ interface ScopeEstimatorProps {
   onChangeCurrency: (currency: Currency) => void;
 }
 
-const TIER_LABELS: { id: EstimatorTier; label: string; hint: string }[] = [
-  { id: 'quick', label: 'Quick Fix / Add-on', hint: '1–7 days' },
-  { id: 'mvp', label: 'Prototype / MVP', hint: '1–3 weeks' },
-  { id: 'full', label: 'Full Build', hint: '3–7 weeks' },
+const TIER_LABELS: { id: EstimatorTier; label: string }[] = [
+  { id: 'quick', label: 'Quick Fix / Add-on' },
+  { id: 'mvp', label: 'Prototype / MVP' },
+  { id: 'full', label: 'Full Build' },
 ];
 
 export function ScopeEstimator({
@@ -25,7 +24,7 @@ export function ScopeEstimator({
   const [tier, setTier] = useState<EstimatorTier>('mvp');
   const [designReadiness, setDesignReadiness] = useState<DesignReadiness>('ready-specs');
   const [customNote, setCustomNote] = useState('');
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState('');
 
   const option = ESTIMATOR_OPTIONS.find((item) => item.id === selectedType) ?? ESTIMATOR_OPTIONS[0];
   const tierData = option.tiers[tier];
@@ -60,322 +59,133 @@ export function ScopeEstimator({
   const handleCopyBrief = async () => {
     try {
       await navigator.clipboard.writeText(briefText);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2200);
+      setCopyStatus('Brief copied.');
+      window.setTimeout(() => setCopyStatus(''), 3000);
     } catch {
-      setCopied(false);
+      setCopyStatus('Could not copy the brief. Open the brief preview to copy it manually.');
     }
   };
 
+
   return (
-    <section id="estimate" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+    <section id="estimate" tabIndex={-1} className="page-width page-section">
+      <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <span className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--accent-emerald)' }}>
-            Interactive Scope &amp; Estimate
-          </span>
-          <h2 className="mt-1 font-display text-2xl font-bold sm:text-3xl" style={{ color: 'var(--text-primary)' }}>
-            Scope Your Project in 30 Seconds
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm sm:text-base" style={{ color: 'var(--text-secondary)' }}>
-            Pick what you need to see a realistic timeline and ballpark range, then send the pre-filled brief straight to WhatsApp or email.
+          <h2 className="section-title">Project estimator</h2>
+          <p className="supporting-text mt-2 max-w-xl">
+            Choose a scope to see a price range and timeline. Add a note to include it in your project brief.
           </p>
         </div>
-
-        <div
-          className="inline-flex self-start rounded-xl border p-1"
-          style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}
-          role="group"
-          aria-label="Estimator currency"
-        >
-          {(['RM', 'USD'] as Currency[]).map((curr) => {
-            const active = currency === curr;
-            return (
-              <button
-                key={curr}
-                type="button"
-                aria-pressed={active}
-                onClick={() => onChangeCurrency(curr)}
-                className="rounded-lg px-3 py-1.5 font-mono text-xs font-semibold transition-colors"
-                style={
-                  active
-                    ? { backgroundColor: 'var(--accent-emerald)', color: '#ffffff' }
-                    : { color: 'var(--text-secondary)' }
-                }
-              >
-                {curr === 'RM' ? 'RM (Malaysia)' : 'USD (Global)'}
-              </button>
-            );
-          })}
+        <div className="flex gap-2" role="group" aria-label="Estimator currency">
+          <button type="button" className="choice" aria-pressed={currency === 'RM'} onClick={() => onChangeCurrency('RM')}>RM</button>
+          <button type="button" className="choice" aria-pressed={currency === 'USD'} onClick={() => onChangeCurrency('USD')}>USD</button>
         </div>
       </div>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-12">
-        {/* Controls Column */}
-        <div className="surface-card space-y-6 rounded-2xl p-5 sm:p-6 lg:col-span-7">
+      <div className="mt-6 grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="min-w-0 space-y-5">
           <div>
-            <label className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
-              1. What do you need built or fixed?
-            </label>
-            <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
-              {ESTIMATOR_OPTIONS.map((item) => {
-                const active = item.id === selectedType;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    aria-pressed={active}
-                    onClick={() => onChangeType(item.id)}
-                    className="rounded-xl border p-3 text-left transition-all"
-                    style={
-                      active
-                        ? {
-                            backgroundColor: 'var(--accent-emerald-soft)',
-                            borderColor: 'var(--accent-emerald)',
-                          }
-                        : {
-                            backgroundColor: 'var(--bg-elevated)',
-                            borderColor: 'var(--border-subtle)',
-                          }
-                    }
-                  >
-                    <p
-                      className="text-sm font-semibold"
-                      style={{ color: active ? 'var(--accent-emerald)' : 'var(--text-primary)' }}
-                    >
-                      {item.label}
-                    </p>
-                    <p className="mt-1 text-xs leading-snug" style={{ color: 'var(--text-secondary)' }}>
-                      {item.description}
-                    </p>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div>
-            <label className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
-              2. How big is the scope?
-            </label>
-            <div className="mt-2.5 grid gap-2 sm:grid-cols-3">
-              {TIER_LABELS.map((item) => {
-                const active = tier === item.id;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    aria-pressed={active}
-                    onClick={() => setTier(item.id)}
-                    className="rounded-xl border px-3 py-2.5 text-left transition-all"
-                    style={
-                      active
-                        ? {
-                            backgroundColor: 'var(--accent-emerald-soft)',
-                            borderColor: 'var(--accent-emerald)',
-                          }
-                        : {
-                            backgroundColor: 'var(--bg-elevated)',
-                            borderColor: 'var(--border-subtle)',
-                          }
-                    }
-                  >
-                    <p
-                      className="text-xs font-bold sm:text-sm"
-                      style={{ color: active ? 'var(--accent-emerald)' : 'var(--text-primary)' }}
-                    >
-                      {item.label}
-                    </p>
-                    <p className="mt-0.5 font-mono text-[11px]" style={{ color: 'var(--text-muted)' }}>
-                      {item.hint}
-                    </p>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div>
-            <label className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
-              3. Designs &amp; requirements
-            </label>
-            <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
-              <button
-                type="button"
-                aria-pressed={designReadiness === 'ready-specs'}
-                onClick={() => setDesignReadiness('ready-specs')}
-                className="rounded-xl border px-3 py-2.5 text-left text-xs font-semibold sm:text-sm"
-                style={
-                  designReadiness === 'ready-specs'
-                    ? {
-                        backgroundColor: 'var(--accent-emerald-soft)',
-                        borderColor: 'var(--accent-emerald)',
-                        color: 'var(--accent-emerald)',
-                      }
-                    : {
-                        backgroundColor: 'var(--bg-elevated)',
-                        borderColor: 'var(--border-subtle)',
-                        color: 'var(--text-secondary)',
-                      }
+            <label htmlFor="estimator-type" className="font-semibold">Project type</label>
+            <select
+              id="estimator-type"
+              value={selectedType}
+              onChange={(event) => {
+                const selectedOption = ESTIMATOR_OPTIONS.find((item) => item.id === event.target.value);
+                if (selectedOption) {
+                  onChangeType(selectedOption.id);
                 }
-              >
-                I have designs / clear specs
+              }}
+              aria-describedby="estimator-type-description"
+              className="estimator-input mt-2 w-full"
+            >
+              {ESTIMATOR_OPTIONS.map((item) => (
+                <option key={item.id} value={item.id}>{item.shortLabel}</option>
+              ))}
+            </select>
+            <p id="estimator-type-description" className="supporting-text mt-2 text-sm">{option.description}</p>
+          </div>
+
+          <fieldset>
+            <legend className="font-semibold">Scope</legend>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {TIER_LABELS.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-pressed={item.id === tier}
+                  onClick={() => setTier(item.id)}
+                  className="choice"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend className="font-semibold">Designs and requirements</legend>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button type="button" className="choice" aria-pressed={designReadiness === 'ready-specs'} onClick={() => setDesignReadiness('ready-specs')}>
+                I have designs or specs
               </button>
-
-              <button
-                type="button"
-                aria-pressed={designReadiness === 'need-prototype'}
-                onClick={() => setDesignReadiness('need-prototype')}
-                className="rounded-xl border px-3 py-2.5 text-left text-xs font-semibold sm:text-sm"
-                style={
-                  designReadiness === 'need-prototype'
-                    ? {
-                        backgroundColor: 'var(--accent-emerald-soft)',
-                        borderColor: 'var(--accent-emerald)',
-                        color: 'var(--accent-emerald)',
-                      }
-                    : {
-                        backgroundColor: 'var(--bg-elevated)',
-                        borderColor: 'var(--border-subtle)',
-                        color: 'var(--text-secondary)',
-                      }
-                }
-              >
-                Clean functional UI / prototype
+              <button type="button" className="choice" aria-pressed={designReadiness === 'need-prototype'} onClick={() => setDesignReadiness('need-prototype')}>
+                I need a functional prototype
               </button>
             </div>
             {designReadiness === 'need-prototype' && (
-              <p className="mt-2 text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                Note: I specialize in engineering, backend integration, and functional prototypes using clean component UI — not custom 2D/3D illustration or brand design.
+              <p className="supporting-text mt-2 text-sm">
+                A component-based interface and interaction flow typically add 1–3 days. Custom illustration, 3D assets and brand design are outside this scope.
               </p>
             )}
-          </div>
+          </fieldset>
 
           <div>
-            <label htmlFor="estimator-note" className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
-              Optional note (included in your brief)
-            </label>
-            <input
+            <label htmlFor="estimator-note" className="font-semibold">Brief note <span className="supporting-text font-normal">(optional)</span></label>
+            <textarea
               id="estimator-note"
-              type="text"
+              rows={3}
               value={customNote}
-              onChange={(e) => setCustomNote(e.target.value)}
-              placeholder="e.g. Stripe webhook bug on Laravel, or Unity quiz app for PhD study"
-              className="mt-2 w-full rounded-xl border px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-emerald-500"
-              style={{
-                backgroundColor: 'var(--bg-elevated)',
-                borderColor: 'var(--border-subtle)',
-                color: 'var(--text-primary)',
-              }}
+              onChange={(event) => setCustomNote(event.target.value)}
+              className="estimator-input mt-2 w-full"
             />
           </div>
         </div>
 
-        {/* Result Output Column */}
-        <div className="surface-card flex flex-col justify-between rounded-2xl p-5 sm:p-6 lg:col-span-5">
-          <div>
-            <div className="flex items-center justify-between">
-              <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--accent-emerald)' }}>
-                <Calculator className="h-4 w-4" />
-                Estimated Range
-              </span>
-              <span className="rounded-md px-2 py-0.5 font-mono text-xs" style={{ backgroundColor: 'var(--bg-elevated)', color: 'var(--text-secondary)' }}>
-                {tierData.timeline}
-              </span>
+        <section aria-labelledby="estimate-summary" className="panel min-w-0 p-4 sm:p-6">
+          <h3 id="estimate-summary" className="text-xl font-bold">Project estimate</h3>
+          <dl className="mt-4 grid gap-2" aria-live="polite" aria-atomic="true">
+            <div className="flex flex-wrap justify-between gap-x-4 gap-y-1 text-sm">
+              <dt className="supporting-text">Scope</dt>
+              <dd className="font-semibold">{tierTitle}</dd>
             </div>
-
-            <p className="mt-3 font-display text-3xl font-bold sm:text-4xl" style={{ color: 'var(--text-primary)' }} data-testid="estimator-price">
-              {priceRange}
-            </p>
-
-            <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
-              Ballpark guide only — I confirm an exact fixed quote after a quick scope review.
-            </p>
-
-            <div className="elevated-card mt-5 rounded-xl p-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
-                  Typical Deliverable
-                </p>
-                <span
-                  className="rounded px-2 py-0.5 font-mono text-[11px]"
-                  style={{
-                    backgroundColor: 'var(--accent-emerald-soft)',
-                    color: 'var(--accent-emerald)',
-                  }}
-                >
-                  {designReadiness === 'ready-specs' ? 'Specs / Designs Ready' : 'Includes Functional Prototype UI'}
-                </span>
-              </div>
-              <p className="mt-1.5 text-sm leading-relaxed" style={{ color: 'var(--text-primary)' }}>
-                {tierData.deliverableHint}
-              </p>
-              {designReadiness === 'need-prototype' && (
-                <p className="mt-2 border-t pt-2 font-mono text-[11px]" style={{ borderColor: 'var(--border-subtle)', color: 'var(--text-secondary)' }}>
-                  + Includes clean component UI layout &amp; interactive flow setup (typically +1–3 days).
-                </p>
-              )}
+            <div className="flex flex-wrap justify-between gap-x-4 gap-y-1 text-sm">
+              <dt className="supporting-text">Timeline</dt>
+              <dd className="font-semibold">{tierData.timeline}</dd>
             </div>
-
-            <div className="mt-4">
-              <p className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
-                Generated Brief Preview
-              </p>
-              <pre
-                className="mt-2 whitespace-pre-wrap rounded-xl border p-3 font-mono text-xs leading-relaxed"
-                style={{
-                  backgroundColor: 'var(--bg-elevated)',
-                  borderColor: 'var(--border-subtle)',
-                  color: 'var(--text-secondary)',
-                }}
-              >
-                {briefText}
-              </pre>
+            <div className="divider mt-2 border-t pt-3">
+              <dt className="supporting-text text-sm">Estimated range</dt>
+              <dd className="quote-amount mt-1 text-2xl leading-tight font-bold sm:text-3xl" data-testid="estimator-price">{priceRange}</dd>
             </div>
+          </dl>
+          <p className="supporting-text mt-2 text-sm">I confirm a fixed quote after reviewing your requirements.</p>
+
+          <div className="divider mt-4 border-t pt-4">
+            <h4 className="font-semibold">Typical deliverable</h4>
+            <p className="supporting-text mt-1 text-sm leading-relaxed">{tierData.deliverableHint}</p>
           </div>
 
-          <div className="mt-6 space-y-2.5">
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
-              style={{ backgroundColor: 'var(--accent-emerald)' }}
-            >
-              <MessageSquare className="h-4 w-4" />
-              Send This Brief on WhatsApp
-            </a>
+          <details className="divider mt-4 border-t">
+            <summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold">Preview your brief</summary>
+            <p className="supporting-text whitespace-pre-wrap [overflow-wrap:anywhere] text-sm leading-relaxed">{briefText}</p>
+          </details>
 
-            <div className="grid grid-cols-2 gap-2.5">
-              <a
-                href={emailHref}
-                className="flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs font-semibold sm:text-sm"
-                style={{
-                  backgroundColor: 'var(--bg-elevated)',
-                  borderColor: 'var(--border-subtle)',
-                  color: 'var(--text-primary)',
-                }}
-              >
-                <Mail className="h-4 w-4" />
-                Send via Email
-              </a>
-
-              <button
-                type="button"
-                onClick={handleCopyBrief}
-                className="flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs font-semibold sm:text-sm"
-                style={{
-                  backgroundColor: 'var(--bg-elevated)',
-                  borderColor: 'var(--border-subtle)',
-                  color: copied ? 'var(--accent-emerald)' : 'var(--text-primary)',
-                }}
-              >
-                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                {copied ? 'Brief Copied!' : 'Copy Brief'}
-              </button>
-            </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="button button-primary">Send via WhatsApp</a>
+            <a href={emailHref} className="button">Send via email</a>
+            <button type="button" onClick={handleCopyBrief} className="button">Copy brief</button>
           </div>
-        </div>
+          {copyStatus && <p className="supporting-text mt-2 text-sm" role="status">{copyStatus}</p>}
+        </section>
       </div>
     </section>
   );

@@ -51,7 +51,6 @@ export interface ProjectItem {
 export interface AudiencePreset {
   id: AudienceMode;
   label: string;
-  eyebrow: string;
   headline: string;
   subcopy: string;
   primaryCtaLabel: string;
@@ -76,7 +75,6 @@ export interface CommercialHighlightItem {
   id: string;
   title: string;
   roleMeta: string;
-  badge: string;
   summary: string;
   stack: string[];
   estimateType: EstimatorProjectType;

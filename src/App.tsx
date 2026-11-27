@@ -46,7 +46,8 @@ export function App() {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.focus({ preventScroll: true });
+      el.scrollIntoView({ block: 'start' });
     }
   };
 
@@ -68,17 +69,20 @@ export function App() {
   const handleEstimateType = (type: EstimatorProjectType) => {
     setEstimatorType(type);
     setSelectedProject(null);
-    window.setTimeout(() => scrollToSection('estimate'), 60);
+    window.requestAnimationFrame(() => scrollToSection('estimate'));
   };
 
   return (
     <div className="min-h-screen">
+      <a href="#main-content" className="button button-primary sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-30">
+        Skip to content
+      </a>
       <Navbar
         theme={theme}
         onToggleTheme={() => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))}
       />
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <HeroShowreel
           audience={audience}
           onSelectAudience={handleSelectAudience}
@@ -111,11 +115,14 @@ export function App() {
 
       <ContactFooter />
 
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-        onEstimateSimilar={handleEstimateType}
-      />
+      {selectedProject && (
+        <ProjectModal
+          key={selectedProject.id}
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+          onEstimateSimilar={handleEstimateType}
+        />
+      )}
     </div>
   );
 }
