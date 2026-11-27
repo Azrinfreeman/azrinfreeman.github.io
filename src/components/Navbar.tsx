@@ -10,6 +10,7 @@ interface NavbarProps {
 
 const NAV_LINKS = [
   { href: '#projects', label: 'Projects' },
+  { href: '#playground', label: 'Playground' },
   { href: '#services', label: 'Services' },
   { href: '#estimate', label: 'Estimate' },
   { href: '#process', label: 'How I work' },

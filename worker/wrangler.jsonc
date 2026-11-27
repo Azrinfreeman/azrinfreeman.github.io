@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-stripe-demo",
+  "main": "stripe-checkout.mjs",
+  "compatibility_date": "2026-11-01",
+  "preview_urls": false,
+  "vars": {
+    "PORTFOLIO_ORIGIN": "https://azrinfreeman.github.io"
+  },
+  "ratelimits": [
+    {
+      "name": "CHECKOUT_LIMIT",
+      "namespace_id": "23891",
+      "simple": { "limit": 8, "period": 60 }
+    }
+  ]
+}

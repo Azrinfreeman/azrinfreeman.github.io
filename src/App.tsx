@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { BackendPlayground } from './components/BackendPlayground';
 import { ContactFooter } from './components/ContactFooter';
 import { HeroShowreel } from './components/HeroShowreel';
 import { Navbar } from './components/Navbar';
@@ -96,6 +97,8 @@ export function App() {
           onOpenProject={setSelectedProject}
           onEstimateSimilar={handleEstimateType}
         />
+
+        <BackendPlayground />
 
         <ServicesSection
           currency={currency}

@@ -1,6 +1,7 @@
 import type {
   AudiencePreset,
   CommercialHighlightItem,
+  DemoEmbed,
   EstimatorOption,
   ProjectCategory,
   ProjectItem,
@@ -116,6 +117,8 @@ interface RawSyncedProject {
   releaseTag?: string;
   liveUrl?: string;
   liveLabel?: string;
+  embedType?: DemoEmbed;
+  mobileOk?: boolean;
   primaryLanguage?: string;
   updatedAt?: string;
 }
@@ -163,6 +166,8 @@ function buildMergedProjects(): ProjectItem[] {
       releaseTag: raw.releaseTag ?? ov.releaseTag,
       liveUrl: ov.liveUrl ?? raw.liveUrl,
       liveLabel: ov.liveLabel ?? raw.liveLabel,
+      embedType: ov.embedType ?? raw.embedType,
+      mobileOk: ov.mobileOk ?? raw.mobileOk,
       similarEstimateType: ov.similarEstimateType ?? SIMILAR_ESTIMATE_BY_CATEGORY[category],
       primaryLanguage: raw.primaryLanguage,
       updatedAt: raw.updatedAt,

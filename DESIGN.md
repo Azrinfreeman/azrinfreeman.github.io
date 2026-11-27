@@ -14,4 +14,6 @@ Edit the color roles and shared controls in [src/index.css](src/index.css). Use 
 
 Lead with playable project media and keep its original colors. Use plain project summaries when a poster is unavailable. Services are a rate list, the work process is an ordered list, and the estimate presents the scope and total as a quote. Give interactive controls a visible keyboard focus indicator and a minimum height of 44 px.
 
+Keep live demo controls beside the existing project media. The playground uses one panel with request and response columns, stacked on smaller screens. Use system sans for labels and monospace for JSON, HTTP paths and status codes.
+
 Run `npm run dev` and check the project reel, project details and estimator in both themes. Use `npm run build` for the production check.
