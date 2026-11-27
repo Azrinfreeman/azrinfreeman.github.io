@@ -22,6 +22,7 @@ export const SIMILAR_ESTIMATE_BY_CATEGORY: Record<
 };
 
 export const PINNED_REPO_ORDER: string[] = [
+  'graduation-flower-card',
   'evergreen-ai-virtual-lab',
   'talentlink-job-portal-demo',
   'unity-subscription-unlock',
