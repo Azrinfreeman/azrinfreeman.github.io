@@ -72,6 +72,16 @@ export interface ServiceItem {
   estimateType: EstimatorProjectType;
 }
 
+export interface CommercialHighlightItem {
+  id: string;
+  title: string;
+  roleMeta: string;
+  badge: string;
+  summary: string;
+  stack: string[];
+  estimateType: EstimatorProjectType;
+}
+
 export interface EstimatorOption {
   id: EstimatorProjectType;
   label: string;

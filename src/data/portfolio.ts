@@ -1,5 +1,6 @@
 import type {
   AudiencePreset,
+  CommercialHighlightItem,
   EstimatorOption,
   ProjectCategory,
   ProjectItem,
@@ -38,7 +39,7 @@ export const AUDIENCE_PRESETS: AudiencePreset[] = [
     eyebrow: 'Freelance & Contract Engineering',
     headline: 'I build mobile apps, backend APIs, and interactive software — and ship working prototypes fast.',
     subcopy:
-      'Need a Flutter app connected to Laravel, a Stripe subscription backend, store publishing fixes, or a custom web/desktop tool? Watch real shipped demos below and get a clear fixed-scope quote.',
+      'Need a Flutter app connected to Laravel, a Stripe subscription backend, store publishing fixes, or a custom web/desktop tool? Watch real working demos below and get a clear fixed-scope quote.',
     primaryCtaLabel: 'Estimate a Project',
     primaryCtaAction: 'estimate',
     secondaryCtaLabel: 'WhatsApp Directly',
@@ -74,8 +75,8 @@ export const AUDIENCE_PRESETS: AudiencePreset[] = [
     eyebrow: 'Full-Time & Contract Roles',
     headline: 'Software developer with ~3 years full-time and ~5 years freelance shipping web, mobile & Unity apps.',
     subcopy:
-      'Former Software / Unity Developer Officer at Hanana Academy (Jan 2024 – Nov 2026) and freelance Unity/Flutter/Laravel builder since 2019. Based in Kota Bharu, available immediately, and ready to relocate anywhere in Malaysia.',
-    primaryCtaLabel: 'Download Resume (PDF)',
+      'Former Software / Unity Developer Officer at Hanana Academy (Jan 2024 – Nov 2026) and freelance Unity, Flutter & PHP/Laravel developer (Techies Inc 2019–2024 & independent contracts since 2018). Based in Kota Bharu, available immediately, and ready to relocate anywhere in Malaysia.',
+    primaryCtaLabel: 'View Resume (PDF)',
     primaryCtaAction: 'resume',
     secondaryCtaLabel: 'View LinkedIn',
     secondaryCtaHref: PROFILE.linkedinUrl,
@@ -92,7 +93,7 @@ export const PROJECT_CATEGORIES: { id: ProjectCategory; label: string }[] = [
   { id: 'mobile', label: 'Mobile (Flutter)' },
   { id: 'backend', label: 'Backend & Stripe' },
   { id: 'edtech', label: 'EdTech, Unity & AR' },
-  { id: 'tools', label: 'AI Bots & Desktop Tools' },
+  { id: 'tools', label: 'AI Bots, Web & Desktop' },
 ];
 
 interface RawSyncedProject {
@@ -197,6 +198,29 @@ export const PROOF_METRICS = [
   {
     value: 'AI-Accelerated + Tested',
     label: 'Rapid agent-assisted drafts, personally reviewed & tested',
+  },
+];
+
+export const COMMERCIAL_HIGHLIGHTS: CommercialHighlightItem[] = [
+  {
+    id: 'comm-iktisass',
+    title: 'Talent Management Application (IKTISASS)',
+    roleMeta: 'Freelance Contract · 2025',
+    badge: 'Closed-Source Client Delivery',
+    summary:
+      'Built the Flutter mobile application and the Laravel REST API connecting it to an existing Laravel and MySQL-backed web platform, extending the website into a mobile-first app with administrator/user role functionality and responsive data dashboards.',
+    stack: ['Flutter', 'Dart', 'Laravel REST API', 'MySQL', 'Role-Based Dashboards'],
+    estimateType: 'flutter-app',
+  },
+  {
+    id: 'comm-hanana-games',
+    title: 'Primary-School Web & Android Learning Games (Hanana Academy)',
+    roleMeta: 'Software / Unity Developer Officer · Jan 2024 – Nov 2026',
+    badge: 'Closed-Source Employer Work',
+    summary:
+      'Developed Unity/C# educational applications and shipped browser and signed Android learning games for Malaysian primary pupils using Phaser, Vite, and Capacitor — including an offline-first PWA and Malay/English voice-overs generated with Microsoft Edge neural TTS (msedge-tts).',
+    stack: ['Unity / C#', 'Phaser', 'Vite', 'Capacitor Android', 'PWA (Offline-First)', 'msedge-tts'],
+    estimateType: 'edtech-unity',
   },
 ];
 
@@ -488,7 +512,7 @@ export const STACK_GROUPS = [
   },
   {
     label: 'Mobile & Web',
-    items: ['Flutter', 'Dart', 'JavaScript', 'HTML / CSS', 'Play Store & App Store Publishing', 'Next.js / React / TypeScript*'],
+    items: ['Flutter', 'Dart', 'JavaScript', 'HTML / CSS', 'Play Store & App Store Publishing', 'Node.js / Next.js / React / TypeScript*'],
   },
   {
     label: 'EdTech, Games & Desktop',

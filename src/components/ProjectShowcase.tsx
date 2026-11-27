@@ -1,18 +1,20 @@
-import { ExternalLink, Film, Github, Images, Tag } from 'lucide-react';
-import { PROJECT_CATEGORIES, PROJECTS } from '../data/portfolio';
-import type { ProjectCategory, ProjectItem } from '../types';
+import { ArrowRight, Briefcase, ExternalLink, Film, Github, Images, Lock, Tag } from 'lucide-react';
+import { COMMERCIAL_HIGHLIGHTS, PROJECT_CATEGORIES, PROJECTS } from '../data/portfolio';
+import type { EstimatorProjectType, ProjectCategory, ProjectItem } from '../types';
 import { ProjectCardVisual } from './ProjectCardVisual';
 
 interface ProjectShowcaseProps {
   activeCategory: ProjectCategory;
   onSelectCategory: (cat: ProjectCategory) => void;
   onOpenProject: (project: ProjectItem) => void;
+  onEstimateSimilar: (estimateType: EstimatorProjectType) => void;
 }
 
 export function ProjectShowcase({
   activeCategory,
   onSelectCategory,
   onOpenProject,
+  onEstimateSimilar,
 }: ProjectShowcaseProps) {
   const filteredProjects =
     activeCategory === 'all'
@@ -30,7 +32,7 @@ export function ProjectShowcase({
             Selected Public Work
           </span>
           <h2 className="mt-1 font-display text-2xl font-bold sm:text-3xl" style={{ color: 'var(--text-primary)' }}>
-            Real Shipped Projects &amp; Video Demos
+            Public Projects, Working Prototypes &amp; Video Demos
           </h2>
           <p className="mt-2 max-w-2xl text-sm sm:text-base" style={{ color: 'var(--text-secondary)' }}>
             Every project below is public on GitHub. Click any card to watch its trailer, inspect screenshots, or estimate a similar build.
@@ -115,16 +117,32 @@ export function ProjectShowcase({
                 {project.tagline}
               </p>
 
-              {project.disclosureNote && (
-                <p
-                  className="mt-2.5 inline-block self-start rounded-md px-2 py-0.5 font-mono text-[11px]"
-                  style={{
-                    backgroundColor: 'var(--accent-amber-soft)',
-                    color: 'var(--accent-amber)',
-                  }}
-                >
-                  {project.disclosureNote.split('(')[0].trim()}
-                </p>
+              {(project.disclosureNote || project.aiDirectedNote) && (
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                  {project.disclosureNote && (
+                    <span
+                      className="inline-block rounded-md px-2 py-0.5 font-mono text-[11px] leading-snug"
+                      style={{
+                        backgroundColor: 'var(--accent-amber-soft)',
+                        color: 'var(--accent-amber)',
+                      }}
+                    >
+                      {project.disclosureNote}
+                    </span>
+                  )}
+                  {project.aiDirectedNote && (
+                    <span
+                      className="inline-block rounded-md border px-2 py-0.5 font-mono text-[11px] leading-snug"
+                      style={{
+                        backgroundColor: 'var(--bg-elevated)',
+                        borderColor: 'var(--border-subtle)',
+                        color: 'var(--text-muted)',
+                      }}
+                    >
+                      AI-directed · Personally reviewed &amp; tested
+                    </span>
+                  )}
+                </div>
               )}
 
               <div className="mt-4 flex flex-wrap gap-1.5">
@@ -206,6 +224,86 @@ export function ProjectShowcase({
             </div>
           </article>
         ))}
+      </div>
+
+      {/* Closed-Source Commercial & Employer Deliveries Strip */}
+      <div className="mt-12 rounded-2xl border p-5 sm:p-6" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <Briefcase className="h-4 w-4" style={{ color: 'var(--accent-emerald)' }} />
+            <h3 className="font-display text-base font-bold sm:text-lg" style={{ color: 'var(--text-primary)' }}>
+              Commercial &amp; Employer Deliveries (Closed-Source)
+            </h3>
+          </div>
+          <span className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px]" style={{ backgroundColor: 'var(--bg-elevated)', color: 'var(--text-muted)' }}>
+            <Lock className="h-3 w-3" />
+            Client / Employer IP · Described per Resume
+          </span>
+        </div>
+
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          {COMMERCIAL_HIGHLIGHTS.map((item) => (
+            <div
+              key={item.id}
+              className="elevated-card flex flex-col justify-between rounded-xl p-4 sm:p-5"
+            >
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="font-mono text-xs font-semibold" style={{ color: 'var(--accent-emerald)' }}>
+                    {item.roleMeta}
+                  </span>
+                  <span
+                    className="rounded px-2 py-0.5 font-mono text-[11px]"
+                    style={{
+                      backgroundColor: 'var(--accent-amber-soft)',
+                      color: 'var(--accent-amber)',
+                    }}
+                  >
+                    {item.badge}
+                  </span>
+                </div>
+
+                <h4 className="mt-1.5 font-display text-base font-bold" style={{ color: 'var(--text-primary)' }}>
+                  {item.title}
+                </h4>
+
+                <p className="mt-2 text-xs leading-relaxed sm:text-sm" style={{ color: 'var(--text-secondary)' }}>
+                  {item.summary}
+                </p>
+              </div>
+
+              <div className="mt-4">
+                <div className="flex flex-wrap gap-1.5">
+                  {item.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-md border px-2 py-0.5 font-mono text-[11px]"
+                      style={{
+                        backgroundColor: 'var(--bg-surface)',
+                        borderColor: 'var(--border-subtle)',
+                        color: 'var(--text-secondary)',
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-3 flex justify-end border-t pt-3" style={{ borderColor: 'var(--border-subtle)' }}>
+                  <button
+                    type="button"
+                    onClick={() => onEstimateSimilar(item.estimateType)}
+                    className="inline-flex items-center gap-1 text-xs font-semibold transition-opacity hover:opacity-80"
+                    style={{ color: 'var(--accent-emerald)' }}
+                  >
+                    Estimate a Similar Build
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

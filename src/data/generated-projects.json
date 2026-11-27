@@ -1,5 +1,44 @@
 [
   {
+    "repoKey": "graduation-flower-card",
+    "repoName": "graduation-flower-card",
+    "id": "graduation-flower-card",
+    "title": "Graduation Flower Card",
+    "tagline": "Customizable interactive graduation flower card with playful quiz, typewriter message, and 8 switchable 3D/2D/SVG flower bouquets (vanilla HTML/CSS/JS).",
+    "category": "tools",
+    "featuredInReel": false,
+    "durationBadge": "3 Shots",
+    "posterUrl": "/media/synced/graduation-flower-card-poster.webp",
+    "gallery": [
+      {
+        "src": "/media/synced/graduation-flower-card-poster.webp",
+        "caption": "Graduation Flower Card screenshot 1"
+      },
+      {
+        "src": "/media/synced/graduation-flower-card-shot-2.webp",
+        "caption": "Graduation Flower Card screenshot 2"
+      },
+      {
+        "src": "/media/synced/graduation-flower-card-shot-3.webp",
+        "caption": "Graduation Flower Card screenshot 3"
+      }
+    ],
+    "stack": [
+      "JavaScript"
+    ],
+    "problem": "A small interactive graduation card you can personalise and send as a link. The visitor answers two playful questions, gets a \"Congratulations\" with confetti, reads your typed message, and finally sees a bouquet bloom, drawn entirely in code.",
+    "solution": "It is plain HTML, CSS and JavaScript: no framework, no build step, no images for the flowers. Edit one file, upload the folder, and share the link.",
+    "highlights": [
+      "Sound effects: eight short CC0 clips (a paper page turn, soft chimes, a pop when the wrong answer runs away) with one corner volume control. Try them on the sound board.",
+      "Optional background song: off by default. Add your own MP3 and it fades in quietly after the first tap.",
+      "Fits every screen: tested from 320 px phones to wide desktops, portrait and landscape."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/graduation-flower-card",
+    "liveUrl": "https://azrinfreeman.github.io/graduation-flower-card/",
+    "primaryLanguage": "JavaScript",
+    "updatedAt": "2026-11-27T16:22:06Z"
+  },
+  {
     "repoKey": "appointly",
     "repoName": "Appointly",
     "id": "appointly",

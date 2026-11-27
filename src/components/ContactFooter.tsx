@@ -116,7 +116,8 @@ export function ContactFooter() {
 
                 <a
                   href={PROFILE.resumeUrl}
-                  download="Azrin-Amran-Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold"
                   style={{
                     backgroundColor: 'var(--bg-elevated)',
@@ -125,7 +126,7 @@ export function ContactFooter() {
                   }}
                 >
                   <Download className="h-3.5 w-3.5" />
-                  Resume
+                  Resume (PDF)
                 </a>
               </div>
             </div>

@@ -147,7 +147,8 @@ export function HeroShowreel({
               {preset.primaryCtaAction === 'resume' && (
                 <a
                   href="/Azrin-Amran-Resume.pdf"
-                  download="Azrin-Amran-Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
                   style={{ backgroundColor: 'var(--accent-emerald)' }}
                 >
@@ -228,7 +229,7 @@ export function HeroShowreel({
                       playsInline
                       className="h-full w-full object-cover"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/35" />
                     <button
                       type="button"
                       onClick={() => setPlayingInlineId(activeProject.id)}
@@ -245,7 +246,7 @@ export function HeroShowreel({
                       alt={activeProject.title}
                       className="h-full w-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-black/35" />
                     {activeProject.videoUrl && (
                       <button
                         type="button"
@@ -262,11 +263,11 @@ export function HeroShowreel({
                 )}
 
                 {!isPlayingFull && (
-                  <div className="pointer-events-none absolute bottom-3 left-3 max-w-[54%] sm:max-w-[65%]">
-                    <span className="inline-block rounded bg-black/75 px-2 py-0.5 font-mono text-[11px] text-emerald-300">
+                  <div className="pointer-events-none absolute top-3 left-3 max-w-[78%] rounded-lg border border-white/10 bg-slate-950/80 px-2.5 py-1.5 backdrop-blur-sm">
+                    <span className="block font-mono text-[10px] font-semibold uppercase tracking-wide text-emerald-300">
                       {activeProject.categoryLabel}
                     </span>
-                    <p className="mt-1 truncate text-xs font-semibold text-white drop-shadow sm:text-sm">
+                    <p className="truncate text-xs font-semibold text-white sm:text-sm">
                       {activeProject.title}
                     </p>
                   </div>

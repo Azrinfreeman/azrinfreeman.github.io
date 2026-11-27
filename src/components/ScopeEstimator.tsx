@@ -293,12 +293,28 @@ export function ScopeEstimator({
             </p>
 
             <div className="elevated-card mt-5 rounded-xl p-4">
-              <p className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
-                Typical Deliverable
-              </p>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
+                  Typical Deliverable
+                </p>
+                <span
+                  className="rounded px-2 py-0.5 font-mono text-[11px]"
+                  style={{
+                    backgroundColor: 'var(--accent-emerald-soft)',
+                    color: 'var(--accent-emerald)',
+                  }}
+                >
+                  {designReadiness === 'ready-specs' ? 'Specs / Designs Ready' : 'Includes Functional Prototype UI'}
+                </span>
+              </div>
               <p className="mt-1.5 text-sm leading-relaxed" style={{ color: 'var(--text-primary)' }}>
                 {tierData.deliverableHint}
               </p>
+              {designReadiness === 'need-prototype' && (
+                <p className="mt-2 border-t pt-2 font-mono text-[11px]" style={{ borderColor: 'var(--border-subtle)', color: 'var(--text-secondary)' }}>
+                  + Includes clean component UI layout &amp; interactive flow setup (typically +1–3 days).
+                </p>
+              )}
             </div>
 
             <div className="mt-4">

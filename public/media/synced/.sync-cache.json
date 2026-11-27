@@ -1,0 +1,21 @@
+{
+  "graduation-flower-card": {
+    "key": "graduation-flower-card@2026-11-27T16:22:06Z",
+    "posterUrl": "/media/synced/graduation-flower-card-poster.webp",
+    "gallery": [
+      {
+        "src": "/media/synced/graduation-flower-card-poster.webp",
+        "caption": "Graduation Flower Card screenshot 1"
+      },
+      {
+        "src": "/media/synced/graduation-flower-card-shot-2.webp",
+        "caption": "Graduation Flower Card screenshot 2"
+      },
+      {
+        "src": "/media/synced/graduation-flower-card-shot-3.webp",
+        "caption": "Graduation Flower Card screenshot 3"
+      }
+    ],
+    "durationBadge": "3 Shots"
+  }
+}

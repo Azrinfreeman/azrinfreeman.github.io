@@ -8,7 +8,7 @@ export const CATEGORY_LABELS: Record<Exclude<ProjectCategory, 'all'>, string> = 
   mobile: 'Mobile (Flutter)',
   backend: 'Backend & Stripe',
   edtech: 'EdTech, Unity & AR',
-  tools: 'AI Bots & Desktop Tools',
+  tools: 'AI Bots, Web & Desktop',
 };
 
 export const SIMILAR_ESTIMATE_BY_CATEGORY: Record<
@@ -22,7 +22,6 @@ export const SIMILAR_ESTIMATE_BY_CATEGORY: Record<
 };
 
 export const PINNED_REPO_ORDER: string[] = [
-  'graduation-flower-card',
   'evergreen-ai-virtual-lab',
   'talentlink-job-portal-demo',
   'unity-subscription-unlock',
@@ -34,6 +33,7 @@ export const PINNED_REPO_ORDER: string[] = [
   'hujan',
   'betternotes',
   'appointly',
+  'graduation-flower-card',
 ];
 
 export const PROJECT_OVERRIDES: Record<string, ProjectOverride> = {
@@ -112,7 +112,7 @@ export const PROJECT_OVERRIDES: Record<string, ProjectOverride> = {
       'Packaged into a reusable template so new apps can integrate subscriptions cleanly.',
     ],
     disclosureNote:
-      'Tested working prototype & reusable template (built and verified in testing; not launched to live end-users).',
+      'Tested working prototype & reusable template — verified in testing, not launched to live end-users.',
     similarEstimateType: 'api-stripe',
   },
   hopboard: {
@@ -303,5 +303,28 @@ export const PROJECT_OVERRIDES: Record<string, ProjectOverride> = {
       'Clean offline-capable architecture ready to extend with REST APIs.',
     ],
     similarEstimateType: 'flutter-app',
+  },
+  'graduation-flower-card': {
+    repoName: 'graduation-flower-card',
+    id: 'graduation-flower-card',
+    title: 'Graduation Flower Card — Interactive Web App',
+    tagline:
+      'Customizable interactive graduation web experience with playful quiz, typewriter letter, audio controls & 8 procedural 3D/2D/SVG flower bouquets.',
+    category: 'tools',
+    stack: ['JavaScript', 'HTML5 / CSS3', '3D / SVG Animation', 'Web Audio'],
+    problem:
+      'Digital greeting cards are often static templates or locked behind ad-heavy platforms that are difficult to personalize and host independently.',
+    solution:
+      'Built a zero-dependency interactive web application in vanilla HTML, CSS, and JavaScript featuring a playful two-question quiz, confetti reveal, typewriter message, CC0 sound effects, and 8 switchable procedural 3D/2D/SVG flower bouquets.',
+    highlights: [
+      'Eight code-drawn 3D, 2D, and SVG flower bouquets with zero external image dependencies.',
+      'Eight CC0 sound-effect clips and optional background music with fade-in and volume controls.',
+      'Responsive layout verified from 320px mobile screens to wide desktop viewports.',
+    ],
+    aiDirectedNote:
+      'Built by directing AI coding agents, then personally reviewed and verified across mobile and desktop viewports.',
+    liveUrl: 'https://azrinfreeman.github.io/graduation-flower-card/',
+    liveLabel: 'Live Web Demo',
+    similarEstimateType: 'web-laravel',
   },
 };

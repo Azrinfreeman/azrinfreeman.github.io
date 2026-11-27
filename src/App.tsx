@@ -50,8 +50,18 @@ export function App() {
     }
   };
 
+  const handleSelectAudience = (mode: AudienceMode) => {
+    setAudience(mode);
+    if (mode === 'researcher') {
+      setEstimatorType('edtech-unity');
+    } else if (mode === 'client') {
+      setEstimatorType('api-stripe');
+    }
+  };
+
   const handleJumpToEdtech = () => {
     setCategory('edtech');
+    setEstimatorType('edtech-unity');
     scrollToSection('projects');
   };
 
@@ -71,7 +81,7 @@ export function App() {
       <main>
         <HeroShowreel
           audience={audience}
-          onSelectAudience={setAudience}
+          onSelectAudience={handleSelectAudience}
           onJumpToEdtech={handleJumpToEdtech}
           onOpenProject={setSelectedProject}
         />
@@ -80,6 +90,7 @@ export function App() {
           activeCategory={category}
           onSelectCategory={setCategory}
           onOpenProject={setSelectedProject}
+          onEstimateSimilar={handleEstimateType}
         />
 
         <ServicesSection
