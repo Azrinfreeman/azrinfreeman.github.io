@@ -1,0 +1,327 @@
+[
+  {
+    "repoKey": "appointly",
+    "repoName": "Appointly",
+    "id": "appointly",
+    "title": "Appointly",
+    "tagline": "Flutter appointment manager with recurring schedules, client views, local reminders, and JSON backup.",
+    "category": "mobile",
+    "featuredInReel": false,
+    "stack": [
+      "Dart"
+    ],
+    "problem": "A Flutter mobile application for managing appointments, recurring schedules, and client details with local device storage.",
+    "solution": "Appointly combines a calendar, appointment history, and client views in one application. Users can create a booking, choose a reminder, reuse contact details, and export appointment records as JSON.",
+    "highlights": [
+      "Calendar and booking form: client name, phone number, location/notes, date, optional time, and editing controls.",
+      "Recurring schedules: one-time, weekly, and monthly appointments, with controls to delete one occurrence or the entire series and undo a deletion.",
+      "Local persistence: Hive CE stores appointments and settings; Provider connects database changes to the UI."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/Appointly",
+    "primaryLanguage": "Dart",
+    "updatedAt": "2026-10-16T10:15:55Z"
+  },
+  {
+    "repoKey": "betternotes",
+    "repoName": "BetterNotes",
+    "id": "betternotes",
+    "title": "BetterNotes",
+    "tagline": "Colorful sticky notes for Windows, web, and mobile. Flutter app with rich text, images, reminders, backups, and optional Google/Supabase sync.",
+    "category": "mobile",
+    "featuredInReel": false,
+    "posterUrl": "/media/posters/betternotes-icon.webp",
+    "stack": [
+      "Dart",
+      "Cross Platform",
+      "Desktop App",
+      "Flutter",
+      "Notes App",
+      "Productivity",
+      "Sticky Notes"
+    ],
+    "problem": "Colorful sticky notes that stay with you across devices.",
+    "solution": "A cross-platform notes app built with Flutter, designed as a richer replacement for Windows Sticky Notes. It works fully offline and can optionally sync through Google sign-in.",
+    "highlights": [
+      "Desktop sticky notes. Each note gets its own movable, resizable window on Windows. Windows remember their position, can stay on top, and reopen where you left them.",
+      "Rich text editing. Headings, lists, checklists, quotes, inline code, text and highlight colors, font sizes, links, find-in-note, and full undo/redo.",
+      "Images and ink. Paste screenshots straight from the clipboard, place images inline, and draw with a mouse, touch, or stylus. Images are compressed automatically."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/BetterNotes",
+    "releaseUrl": "https://github.com/Azrinfreeman/BetterNotes/releases/tag/v1.1.3",
+    "releaseTag": "v1.1.3",
+    "primaryLanguage": "Dart",
+    "updatedAt": "2026-11-07T20:24:35Z"
+  },
+  {
+    "repoKey": "hujan",
+    "repoName": "Hujan",
+    "id": "hujan",
+    "title": "Hujan",
+    "tagline": "A self-hosted Discord companion for Windows. One bot gives your server an AI assistant with a personality you choose, rain and sleep ambience for voice channels, and consent-gated voice summaries transcribed on your own machine.",
+    "category": "tools",
+    "featuredInReel": false,
+    "stack": [
+      "TypeScript"
+    ],
+    "problem": "A self-hosted Discord companion for Windows. One bot gives your server an AI assistant with a personality you choose, rain and sleep ambience for voice channels, and consent-gated voice summaries transcribed on your own machine.",
+    "solution": "1. Open <http://127.0.0.1:3210> and enter the one-time access code printed in the terminal.",
+    "highlights": [
+      "Sleep ambience. /sleep join mode:rain|sunny|silent streams rain, sunny birdsong and distant thunder into a voice channel from local audio files.",
+      "Windows desktop app. Electron app with a tray icon, Start/Stop, protected settings and a bundled Node runtime.",
+      "Local dashboard. Owner-only web UI at 127.0.0.1 for settings, ambience, commands and health."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/Hujan",
+    "releaseUrl": "https://github.com/Azrinfreeman/Hujan/releases/tag/v0.3.4",
+    "releaseTag": "v0.3.4",
+    "primaryLanguage": "TypeScript",
+    "updatedAt": "2026-11-10T19:28:11Z"
+  },
+  {
+    "repoKey": "monitor-remote",
+    "repoName": "Monitor-Remote",
+    "id": "monitor-remote",
+    "title": "Monitor Remote",
+    "tagline": "Windows monitor control, remote screen viewing, touch mouse and keyboard input, and PC audio device volume control.",
+    "category": "tools",
+    "featuredInReel": false,
+    "posterUrl": "/media/posters/monitor-remote.webp",
+    "stack": [
+      "C#"
+    ],
+    "problem": "A Windows desktop companion that turns iPhone Safari into a local PC controller.",
+    "solution": "View a selected Windows display, control the mouse with touch, type from your phone, and adjust playback or microphone endpoint volume. External-monitor brightness and all-display off/wake controls are also available. A Windows Forms launcher manages the server, QR pairing, permissions and tray controls; the phone uses plain HTML, CSS and JavaScript without a native app or cloud service.",
+    "highlights": [
+      "Allow screen viewing: the phone's Desktop tab can list and view a selected display.",
+      "Allow mouse and keyboard control: permits touch and typing after screen viewing is enabled. The phone separately selects Enable control.",
+      "Allow audio volume control: enables Audio, independently of screen sharing."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/Monitor-Remote",
+    "releaseUrl": "https://github.com/Azrinfreeman/Monitor-Remote/releases/tag/v1.1.0",
+    "releaseTag": "v1.1.0",
+    "primaryLanguage": "C#",
+    "updatedAt": "2026-11-26T08:58:29Z"
+  },
+  {
+    "repoKey": "mathfuneducation",
+    "repoName": "MathFunEducation",
+    "id": "mathfuneducation",
+    "title": "MathFunEducation",
+    "tagline": "FunMath: Unity mathematics lessons, quizzes, minigames, and Vuforia image-target AR activities.",
+    "category": "edtech",
+    "featuredInReel": false,
+    "durationBadge": "Video Demo",
+    "posterUrl": "/media/posters/mathfun.webp",
+    "videoUrl": "/media/videos/mathfun-demo.mp4",
+    "stack": [
+      "C#"
+    ],
+    "problem": "![Fun Math](https://azrinamran98.itch.io/math-fun-education)",
+    "solution": "▶ Play the web demo on itch.io · 🎬 Watch the 40-second trailer · 📱 Download the Android app (APK)",
+    "highlights": [
+      "Built for small children, in two languages. Malay and English text and voice-over, with a friendly owl guide, big buttons and a parent area behind a maths question.",
+      "Maths you can touch. Besides lessons and quizzes, kids play a rocket game, balance scales and a directional \"algorithm\" puzzle that teaches sequencing.",
+      "AR on the phone. Eleven Vuforia image-target lessons let children see addition, time, perimeter, area and volume on real objects."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/MathFunEducation",
+    "releaseUrl": "https://github.com/Azrinfreeman/MathFunEducation/releases/tag/v1.0.0",
+    "releaseTag": "v1.0.0",
+    "primaryLanguage": "C#",
+    "updatedAt": "2026-11-05T18:58:21Z"
+  },
+  {
+    "repoKey": "virtual-lab",
+    "repoName": "Virtual-Lab",
+    "id": "virtual-lab",
+    "title": "Virtual Lab",
+    "tagline": "Unity science-learning project with guided experiments, object interactions, quizzes, and account/results integration.",
+    "category": "edtech",
+    "featuredInReel": false,
+    "durationBadge": "60s Video",
+    "posterUrl": "/media/posters/virtual-lab.webp",
+    "videoUrl": "/media/videos/virtual-lab-demo.mp4",
+    "gallery": [
+      {
+        "src": "/media/posters/virtual-lab.webp",
+        "caption": "Guided 3D virtual biology lab experiment scene"
+      },
+      {
+        "src": "/media/posters/virtual-lab-menu.webp",
+        "caption": "Module selection and interactive lesson menu"
+      },
+      {
+        "src": "/media/posters/virtual-lab-anatomy.webp",
+        "caption": "Interactive anatomy inspection and nutrition quiz"
+      }
+    ],
+    "stack": [
+      "HTML"
+    ],
+    "problem": "A Unity science-learning application with Malay-language activities, interactive laboratory sequences, quizzes, and results review.",
+    "solution": "Virtual Lab brings lesson content and practical interactions into a scene-based learning experience. Its activities include digestive-system identification, a carbohydrate food-sample experiment, and food-pyramid/healthy-plate tasks. The project combines object selection and dragging, animation-driven instructions, answer evaluation, and a PHP-backed account and score flow.",
+    "highlights": [
+      "A structured activity collection: 49 enabled scenes, comprising seven menu/account scenes and 42 scenes grouped under Aktiviti1 through Aktiviti8.",
+      "Interactive lab sequences: raycast-based selection, object dragging, collision checks, and animation states guide experiment steps.",
+      "Different answer interactions: text input, multiple-choice buttons, and drag/drop matching support quizzes and results activities."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/Virtual-Lab",
+    "primaryLanguage": "HTML",
+    "updatedAt": "2026-10-29T20:12:41Z"
+  },
+  {
+    "repoKey": "hzswitcher",
+    "repoName": "HzSwitcher",
+    "id": "hzswitcher",
+    "title": "HzSwitcher",
+    "tagline": "Windows tray app for monitor refresh rate and brightness",
+    "category": "tools",
+    "featuredInReel": true,
+    "durationBadge": "55s Video",
+    "posterUrl": "/media/posters/hzswitcher.webp",
+    "videoUrl": "/media/videos/hzswitcher-demo.mp4",
+    "stack": [
+      "C#"
+    ],
+    "problem": "A small Windows tray app for switching a monitor's refresh rate and brightness, with an automatic power-saver that drops the rate when you are idle or watching video.",
+    "solution": "Version 1.8.0. Windows 10 or 11, x64. Built with C# on .NET 10 (Windows Forms). The release exe is self-contained, so no .NET install is needed.",
+    "highlights": [
+      "Presets: named one-click rates. Defaults are Gaming (highest), Balanced (120 Hz) and Battery saver (60 Hz). If the monitor doesn't support a rate, the nearest one is used.",
+      "Pause automation: pause saver and app profiles together for 15 minutes, 1 hour, or until restart. Manual controls remain available, and saved enable switches stay unchanged.",
+      "Brightness: a slider in the tray menu and on the Display page. Each monitor remembers its own level, and the power-saver can lower brightness too (see below)."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/HzSwitcher",
+    "releaseUrl": "https://github.com/Azrinfreeman/HzSwitcher/releases/tag/v1.8.0",
+    "releaseTag": "v1.8.0",
+    "primaryLanguage": "C#",
+    "updatedAt": "2026-10-28T21:30:23Z"
+  },
+  {
+    "repoKey": "hopboard",
+    "repoName": "hopboard",
+    "id": "hopboard",
+    "title": "Hopboard",
+    "tagline": "Share text between your own devices over local Wi-Fi. No account, no cloud. Paired with a six-digit code, encrypted and certificate-pinned. Flutter for Windows and Android.",
+    "category": "mobile",
+    "featuredInReel": true,
+    "durationBadge": "Video + 3 Shots",
+    "posterUrl": "/media/posters/hopboard.webp",
+    "videoUrl": "/media/videos/hopboard-demo.mp4",
+    "gallery": [
+      {
+        "src": "/media/posters/hopboard.webp",
+        "caption": "Hopboard main Windows & mobile pairing overview"
+      },
+      {
+        "src": "/media/posters/hopboard-copy.webp",
+        "caption": "Instant copy-and-paste transfer across local devices"
+      },
+      {
+        "src": "/media/posters/hopboard-phone.webp",
+        "caption": "Android mobile client receiving synced clipboard items"
+      }
+    ],
+    "stack": [
+      "Dart",
+      "Clipboard",
+      "Cross Platform",
+      "Flutter",
+      "Local Network",
+      "Mdns",
+      "Privacy"
+    ],
+    "problem": "Copy on one device. Paste on another. Nothing leaves your Wi-Fi.",
+    "solution": "![Watch the 60-second Hopboard trailer](docs/media/Hopboard-Trailer.mp4)",
+    "highlights": [
+      "Connections: TLS 1.2+ with certificate pinning, length-limited messages, and per-device rate limits.",
+      "Discovery: devices find each other with mDNS, but discovery is never trusted on its own; the pinned certificate decides.",
+      "Clipboard privacy: copies that password managers mark as private are never sent automatically."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/hopboard",
+    "releaseUrl": "https://github.com/Azrinfreeman/hopboard/releases/tag/v0.3.1",
+    "releaseTag": "v0.3.1",
+    "primaryLanguage": "Dart",
+    "updatedAt": "2026-11-10T00:40:29Z"
+  },
+  {
+    "repoKey": "unity-subscription-unlock",
+    "repoName": "Unity-Subscription-Unlock",
+    "id": "unity-subscription-unlock",
+    "title": "Unity Subscription Unlock",
+    "tagline": "Unity subscription integration prototype for unlocking game content, with account flows and hosted Stripe-related payment pages.",
+    "category": "backend",
+    "featuredInReel": true,
+    "durationBadge": "60s Video",
+    "posterUrl": "/media/posters/stripe-unity.webp",
+    "videoUrl": "/media/videos/stripe-unity-demo.mp4",
+    "stack": [
+      "C#"
+    ],
+    "problem": "Use the existing LogMasuk and LamanUtama scenes for registration, login, profile and subscription menus. The included PHP backend owns authentication, email verification and Stripe billing; Unity presents its results and gates local premium actions.",
+    "solution": "Start with setup. It covers offline checks, server preparation, Unity settings and the online test sequence. The backend URL is intentionally empty until configured.",
+    "highlights": [
+      "Public GitHub repository written primarily in C#.",
+      "Includes source code and documentation on GitHub."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/Unity-Subscription-Unlock",
+    "primaryLanguage": "C#",
+    "updatedAt": "2026-11-03T13:12:01Z"
+  },
+  {
+    "repoKey": "talentlink-job-portal-demo",
+    "repoName": "talentlink-job-portal-demo",
+    "id": "talentlink-job-portal-demo",
+    "title": "Talentlink Job Portal Demo",
+    "tagline": "TalentLink: offline Flutter job & talent management demo (fictional data)",
+    "category": "mobile",
+    "featuredInReel": true,
+    "durationBadge": "40s Video",
+    "posterUrl": "/media/posters/talentlink.webp",
+    "videoUrl": "/media/videos/talentlink-demo.mp4",
+    "stack": [
+      "Dart"
+    ],
+    "problem": "A Flutter job and talent management app that runs entirely offline on",
+    "solution": "fictional sample data. TalentLink is a portfolio demo: it is not affiliated with",
+    "highlights": [
+      "Register and sign in with a local account, or use the sample login",
+      "Save jobs, apply, withdraw, and simulate interview invitations and offers.",
+      "Enrol in training or webinars; sessions appear in the calendar."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/talentlink-job-portal-demo",
+    "releaseUrl": "https://github.com/Azrinfreeman/talentlink-job-portal-demo/releases/tag/v1.0.0",
+    "releaseTag": "v1.0.0",
+    "primaryLanguage": "Dart",
+    "updatedAt": "2026-11-12T13:10:33Z"
+  },
+  {
+    "repoKey": "evergreen-ai-virtual-lab",
+    "repoName": "evergreen-ai-virtual-lab",
+    "id": "evergreen-ai-virtual-lab",
+    "title": "Evergreen Ai Virtual Lab",
+    "tagline": "Malay-language 2D STEM virtual lab in Unity: drag-and-drop experiments, quizzes and an OpenAI-powered science tutor, built with Claude Code + Unity MCP.",
+    "category": "edtech",
+    "featuredInReel": true,
+    "durationBadge": "Video Teaser",
+    "posterUrl": "/media/posters/evergreen.webp",
+    "loopVideoUrl": "/media/videos/evergreen-loop.mp4",
+    "videoUrl": "/media/videos/evergreen-demo.mp4",
+    "stack": [
+      "C#",
+      "Ai Assisted Development",
+      "Csharp",
+      "Edtech",
+      "Openai",
+      "Stem",
+      "Unity"
+    ],
+    "problem": "A 2D Unity virtual science lab for secondary-school students, written in Bahasa Malaysia (KPS curriculum). Students work through guided lessons, run drag-and-drop lab experiments, test themselves with quizzes, and ask an AI science tutor questions at any point.",
+    "solution": "A Windows 64-bit pre-release build is on the Releases page. Unzip it, keep all files together, and run Evergreen.exe. The downloaded build uses the tutor's scripted demo answers and never calls OpenAI.",
+    "highlights": [
+      "Built on the OpenAI-Unity package (Assets/Samples/OpenAI Unity/0.2.2/ChatGPT/ChatGPT.cs).",
+      "Context-aware system prompts: the assistant picks a prompt per screen (Dashboard, Akt1–Akt7, MM3–MM7) so answers stay on the topic the student is studying.",
+      "Scoped behaviour: the tutor answers only science questions and stays in character as a scientist."
+    ],
+    "repoUrl": "https://github.com/Azrinfreeman/evergreen-ai-virtual-lab",
+    "primaryLanguage": "C#",
+    "updatedAt": "2026-11-14T01:23:48Z"
+  }
+]

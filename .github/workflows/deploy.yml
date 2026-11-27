@@ -4,6 +4,9 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
+  schedule:
+    # Runs daily at 03:00 AM Malaysia Time (19:00 UTC)
+    - cron: "0 19 * * *"
 
 permissions:
   contents: read
@@ -27,8 +30,21 @@ jobs:
           node-version: "22"
           cache: "npm"
 
+      - name: Cache synced GitHub media
+        uses: actions/cache@v4
+        with:
+          path: public/media/synced
+          key: github-sync-media-${{ github.run_id }}
+          restore-keys: |
+            github-sync-media-
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Sync public portfolio repositories from GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run sync
 
       - name: Build
         run: npm run build

@@ -1,4 +1,4 @@
-import { Bot, CalendarClock, Lock, Mic, ShieldCheck } from 'lucide-react';
+import { Bot, CalendarClock, Code2, Lock, Mic, ShieldCheck } from 'lucide-react';
 import type { ProjectItem } from '../types';
 
 interface ProjectCardVisualProps {
@@ -119,6 +119,43 @@ export function ProjectCardVisual({ project, className = '' }: ProjectCardVisual
           loading="lazy"
           className="h-full w-auto max-w-full rounded-lg object-contain shadow-md"
         />
+      </div>
+    );
+  }
+
+  if (project.visualVariant === 'auto' || !project.posterUrl) {
+    return (
+      <div
+        className={`relative flex h-full w-full flex-col justify-between overflow-hidden bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/80 px-4 pt-10 pb-3.5 text-slate-100 ${className}`}
+      >
+        <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+          <div className="flex items-center gap-2">
+            <Code2 className="h-4 w-4 text-emerald-400" />
+            <span className="truncate font-display text-xs font-bold text-white">
+              {project.title}
+            </span>
+          </div>
+          {project.primaryLanguage && (
+            <span className="rounded bg-emerald-500/15 px-2 py-0.5 font-mono text-[10px] text-emerald-300">
+              {project.primaryLanguage}
+            </span>
+          )}
+        </div>
+
+        <p className="my-2 line-clamp-2 text-xs leading-relaxed text-slate-300">
+          {project.tagline}
+        </p>
+
+        <div className="flex flex-wrap gap-1">
+          {project.stack.slice(0, 3).map((t) => (
+            <span
+              key={t}
+              className="rounded border border-slate-800 bg-slate-900/80 px-1.5 py-0.5 font-mono text-[10px] text-slate-300"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
     );
   }

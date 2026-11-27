@@ -31,7 +31,9 @@ export interface ProjectItem {
   loopVideoUrl?: string;
   videoUrl?: string;
   gallery?: { src: string; caption: string }[];
-  visualVariant?: 'hujan' | 'betternotes' | 'appointly';
+  visualVariant?: 'hujan' | 'betternotes' | 'appointly' | 'auto';
+  primaryLanguage?: string;
+  updatedAt?: string;
   stack: string[];
   problem: string;
   solution: string;
