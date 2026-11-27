@@ -19,6 +19,7 @@ export function ProjectModal({ project, onClose, onEstimateSimilar }: ProjectMod
   const hasGallery = Boolean(project.gallery?.length);
   const liveDemoUrl = project.embedType ? project.liveUrl : undefined;
   const showLive = Boolean(liveDemoUrl) && mediaTab === 'live';
+  const showUnityPreview = showLive && project.embedType === 'unity';
   const showVideo = hasVideo && mediaTab === 'video';
   const displayedShot = mediaTab === 'gallery' ? project.gallery?.[activeShotIndex] : undefined;
   const showMediaChoices = (hasVideo && hasGallery) || Boolean(liveDemoUrl);
@@ -57,7 +58,7 @@ export function ProjectModal({ project, onClose, onEstimateSimilar }: ProjectMod
           onClose();
         }
       }}
-      className="panel project-dialog fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-4xl overflow-auto text-[var(--text-primary)]"
+      className={`panel project-dialog fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] overflow-auto text-[var(--text-primary)] ${showUnityPreview ? 'max-w-6xl' : 'max-w-4xl'}`}
     >
       <div>
         <header className="divider sticky top-0 z-10 flex items-start justify-between gap-3 border-b bg-[var(--bg-surface)] px-4 py-3 sm:px-6">
@@ -85,6 +86,7 @@ export function ProjectModal({ project, onClose, onEstimateSimilar }: ProjectMod
             <LiveProjectDemo
               title={project.title}
               url={liveDemoUrl}
+              unity={showUnityPreview}
               desktopOnly={project.mobileOk === false || (project.mobileOk === undefined && project.embedType === 'unity')}
               onWatchVideo={hasVideo ? () => setMediaTab('video') : undefined}
             />
