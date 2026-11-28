@@ -66,7 +66,8 @@ export default {
       const options = {
         method: request.method,
         headers: { Authorization: `Bearer ${key}` },
-        redirect: 'error',
+        // Workers does not support 'error'. The upstream status check rejects redirects.
+        redirect: 'manual',
         signal: AbortSignal.timeout(10000),
       };
       let stripeUrl = STRIPE_SESSIONS;
