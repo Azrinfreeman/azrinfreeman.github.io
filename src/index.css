@@ -3,41 +3,42 @@
 @layer base {
   :root {
     color-scheme: light;
-    --bg-canvas: #f0e9e8;
-    --bg-surface: #fffafa;
-    --bg-elevated: #fffdfc;
-    --border-subtle: #c7afb8;
-    --border-control: #8f6b79;
-    --text-primary: #302429;
-    --text-secondary: #615058;
-    --accent-text: #702e43;
-    --accent-fill: #702e43;
-    --accent-hover: #5d2437;
-    --accent-on: #fff7f8;
-    --accent-edge: #702e43;
-    --accent-soft: #eddde2;
-    --quote-amount: #6a4b1a;
-    --media-matte: #1b1618;
-    --overlay: rgb(19 12 15 / 74%);
+    --bg-canvas: #f8f9fb;
+    --bg-surface: #ffffff;
+    --bg-elevated: #eef1f5;
+    --border-subtle: #d7dce4;
+    --border-control: #778396;
+    --text-primary: #1a1d23;
+    --text-secondary: #4b5463;
+    --accent-text: #1a52b3;
+    --accent-fill: #2260cc;
+    --accent-hover: #1b4fa8;
+    --accent-on: #ffffff;
+    --accent-edge: #2260cc;
+    --accent-soft: #e3edfc;
+    --media-matte: #14161a;
+    --overlay: rgb(10 12 16 / 72%);
     --radius-control: 6px;
     --radius-panel: 8px;
   }
 
   .dark {
     color-scheme: dark;
-    --bg-canvas: #30252a;
-    --bg-surface: #403038;
-    --bg-elevated: #4b3841;
-    --border-subtle: #725965;
-    --border-control: #a48594;
-    --text-primary: #f6edf0;
-    --text-secondary: #dbc6cd;
-    --accent-text: #f2c5d5;
-    --accent-fill: #813b52;
-    --accent-hover: #92445d;
-    --accent-edge: #c78da1;
-    --accent-soft: #5b3846;
-    --quote-amount: #e4c484;
+    --bg-canvas: #111317;
+    --bg-surface: #181b21;
+    --bg-elevated: #21252d;
+    --border-subtle: #2e343e;
+    --border-control: #6f798a;
+    --text-primary: #eceef2;
+    --text-secondary: #a9b2bf;
+    --accent-text: #79b8ff;
+    --accent-fill: #2260cc;
+    --accent-hover: #2a6bd6;
+    --accent-on: #ffffff;
+    --accent-edge: #5a93e6;
+    --accent-soft: #172a47;
+    --media-matte: #0a0b0d;
+    --overlay: rgb(3 4 6 / 80%);
   }
 
   html {
@@ -107,7 +108,7 @@
     color: var(--text-primary);
   }
 
-  .quote-amount { color: var(--quote-amount); font-variant-numeric: tabular-nums; }
+  .quote-amount { color: var(--text-primary); font-variant-numeric: tabular-nums; }
   .project-dialog::backdrop { background: var(--overlay); }
 }
 
