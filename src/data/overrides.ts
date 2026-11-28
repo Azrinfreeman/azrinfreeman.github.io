@@ -50,6 +50,10 @@ export const PROJECT_OVERRIDES: Record<string, ProjectOverride> = {
     posterUrl: '/media/posters/evergreen.webp',
     loopVideoUrl: '/media/videos/evergreen-loop.mp4',
     videoUrl: '/media/videos/evergreen-demo.mp4',
+    liveUrl: 'https://azrinfreeman.github.io/evergreen-ai-virtual-lab/',
+    liveLabel: 'Play Web Demo',
+    embedType: 'unity',
+    mobileOk: false,
     stack: ['Unity 6', 'C#', 'OpenAI API', 'Unity MCP', 'Claude Code', 'OpenAI Codex'],
     problem:
       'Secondary students needed a guided Malay-language virtual science lab where an AI assistant explains concepts without simply handing out direct quiz answers.',
@@ -180,6 +184,10 @@ export const PROJECT_OVERRIDES: Record<string, ProjectOverride> = {
     durationBadge: '60s Video',
     posterUrl: '/media/posters/virtual-lab.webp',
     videoUrl: '/media/videos/virtual-lab-demo.mp4',
+    liveUrl: 'https://azrinfreeman.github.io/Virtual-Lab/',
+    liveLabel: 'Play Web Demo',
+    embedType: 'unity',
+    mobileOk: false,
     gallery: [
       { src: '/media/posters/virtual-lab.webp', caption: 'Guided 3D virtual biology lab experiment scene' },
       { src: '/media/posters/virtual-lab-menu.webp', caption: 'Module selection and interactive lesson menu' },
@@ -208,6 +216,10 @@ export const PROJECT_OVERRIDES: Record<string, ProjectOverride> = {
     durationBadge: 'Video Demo',
     posterUrl: '/media/posters/mathfun.webp',
     videoUrl: '/media/videos/mathfun-demo.mp4',
+    liveUrl: 'https://azrinfreeman.github.io/MathFunEducation/',
+    liveLabel: 'Play Web Demo',
+    embedType: 'unity',
+    mobileOk: false,
     stack: ['Unity', 'C#', 'Vuforia AR', 'Inno Setup'],
     problem:
       'Young learners often disengage from static math worksheets and benefit from tactile visual reinforcement.',

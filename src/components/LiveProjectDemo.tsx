@@ -4,10 +4,11 @@ interface LiveProjectDemoProps {
   title: string;
   url: string;
   desktopOnly: boolean;
+  unity: boolean;
   onWatchVideo?: () => void;
 }
 
-function DemoFrame({ title, url }: { title: string; url: string }) {
+function DemoFrame({ title, url, unity }: { title: string; url: string; unity: boolean }) {
   const [status, setStatus] = useState<'loading' | 'loaded' | 'slow'>('loading');
 
   useEffect(() => {
@@ -28,16 +29,17 @@ function DemoFrame({ title, url }: { title: string; url: string }) {
         title={`${title} live demo`}
         src={url}
         sandbox="allow-scripts"
+        allowFullScreen={unity}
         referrerPolicy="no-referrer"
         onLoad={() => setStatus('loaded')}
         inert={status === 'loading'}
-        className="live-demo-frame w-full border-0 bg-white"
+        className={`live-demo-frame w-full border-0 bg-white ${unity ? 'h-[640px]' : ''}`}
       />
     </>
   );
 }
 
-export function LiveProjectDemo({ title, url, desktopOnly, onWatchVideo }: LiveProjectDemoProps) {
+export function LiveProjectDemo({ title, url, desktopOnly, unity, onWatchVideo }: LiveProjectDemoProps) {
   const [frameVersion, setFrameVersion] = useState(0);
   const [frameSize, setFrameSize] = useState<'desktop' | 'phone'>('desktop');
   const [fullscreenError, setFullscreenError] = useState(false);
@@ -59,7 +61,7 @@ export function LiveProjectDemo({ title, url, desktopOnly, onWatchVideo }: LiveP
         <button
           type="button"
           onClick={() => setFrameVersion((previous) => previous + 1)}
-          className={`button ${demoLoaded ? '' : 'button-primary'}`}
+          className={`button ${demoLoaded ? '' : 'button-primary'} ${unity ? 'hidden min-[1080px]:inline-flex' : ''}`}
         >
           {demoLoaded ? 'Reload demo' : 'Load demo'}
         </button>
@@ -72,7 +74,7 @@ export function LiveProjectDemo({ title, url, desktopOnly, onWatchVideo }: LiveP
       {desktopOnly && <p className="supporting-text mt-2 text-sm">Best on desktop with a keyboard and mouse.</p>}
 
       {demoLoaded && (
-        <>
+        <div className={unity ? 'hidden min-[1080px]:block' : undefined}>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             {!desktopOnly && (
               <div role="group" aria-label="Preview width" className="hidden gap-2 sm:flex">
@@ -86,10 +88,10 @@ export function LiveProjectDemo({ title, url, desktopOnly, onWatchVideo }: LiveP
           </div>
           {fullscreenError && <p className="supporting-text mt-2 text-sm" role="status">Fullscreen is unavailable. Open the demo in a new tab.</p>}
           <div ref={frameRef} className={`live-demo-stage panel mx-auto mt-3 overflow-hidden ${frameSize === 'phone' ? 'live-demo-phone max-w-[390px]' : ''}`}>
-            <DemoFrame key={frameVersion} title={title} url={url} />
+            <DemoFrame key={frameVersion} title={title} url={url} unity={unity} />
           </div>
           <p className="supporting-text mt-2 text-sm">If the preview is blank or a feature needs browser storage, open the demo in a new tab.</p>
-        </>
+        </div>
       )}
     </section>
   );
