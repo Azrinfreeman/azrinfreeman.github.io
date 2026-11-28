@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,16 +19,18 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script>
-      (function () {
-        try {
-          var saved = localStorage.getItem('theme');
-          var theme = saved === 'light' ? 'light' : 'dark';
-          var root = document.documentElement;
-          root.classList.remove('light', 'dark');
-          root.classList.add(theme);
-        } catch (e) {}
-      })();
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch {
+        // Cream is the default when browser storage is unavailable.
+      }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- avoid-ai-design-ignore: T2 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..700&amp;family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&amp;display=swap" />
   </head>
   <body>
     <div id="root"></div>

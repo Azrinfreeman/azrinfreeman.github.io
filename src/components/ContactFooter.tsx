@@ -19,7 +19,7 @@ export function ContactFooter() {
   )}`;
 
   return (
-    <footer id="contact" className="divider page-section border-t bg-[var(--bg-surface)]">
+    <footer id="contact" className="section-tint divider page-section border-t">
       <div className="page-width">
         <div className="grid items-start gap-7 md:grid-cols-2">
           <div>

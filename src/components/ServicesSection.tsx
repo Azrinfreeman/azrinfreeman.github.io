@@ -13,7 +13,7 @@ export function ServicesSection({
   onEstimateService,
 }: ServicesSectionProps) {
   return (
-    <section id="services" className="divider page-section border-y bg-[var(--bg-surface)]">
+    <section id="services" className="divider page-section border-t">
       <div className="page-width">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <h2 className="section-title">Services and starting rates</h2>
@@ -40,7 +40,7 @@ export function ServicesSection({
                 </div>
 
                 <div>
-                  <p className="text-base font-bold tabular-nums">{priceLabel}</p>
+                  <p className="service-rate tabular-nums">{priceLabel}</p>
                   <p className="supporting-text mt-1 text-sm">Typical turnaround: {service.turnaround}</p>
                   <button type="button" onClick={() => onEstimateService(service.estimateType)} className="text-link">
                     Estimate this service

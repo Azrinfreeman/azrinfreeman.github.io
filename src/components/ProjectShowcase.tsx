@@ -21,8 +21,7 @@ export function ProjectShowcase({
 
   return (
     <section id="projects" tabIndex={-1} className="page-width page-section">
-      <h2 className="section-title">Projects</h2>
-      <p className="supporting-text mt-2">Browse public repositories, working demos and case studies.</p>
+      <h2 className="section-title">Selected work</h2>
 
       <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="Filter projects by category">
         {PROJECT_CATEGORIES.map((category) => (
@@ -41,22 +40,22 @@ export function ProjectShowcase({
         {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
       </p>
 
-      <div className="mt-5 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-5 grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filteredProjects.map((project) => (
-          <article key={project.id} className={`divider flex min-w-0 flex-col border-b pb-4 ${project.posterUrl ? '' : 'self-start'}`}>
+          <article key={project.id} className="panel project-card min-w-0 p-3 sm:p-4">
             {project.posterUrl && (
               <button
                 type="button"
                 onClick={() => onOpenProject(project)}
-                className="media-stage block aspect-video w-full overflow-hidden hover:brightness-95"
+                className="media-stage block aspect-video w-full overflow-hidden"
                 aria-label={`Open details for ${project.title}`}
               >
                 <ProjectCardVisual project={project} />
               </button>
             )}
-            <div className="pt-3">
+            <div className={project.posterUrl ? 'px-1 pt-3' : 'px-1'}>
               <p className="supporting-text text-sm">{project.categoryLabel}</p>
-              <h3 className="mt-1 text-lg leading-snug font-bold">{project.title}</h3>
+              <h3 className="display-title mt-1">{project.title}</h3>
               <p className="supporting-text mt-2 text-sm leading-relaxed">{project.tagline}</p>
               {project.disclosureNote && (
                 <p className="supporting-text mt-2 text-sm">{project.disclosureNote}</p>
@@ -69,7 +68,7 @@ export function ProjectShowcase({
               )}
             </div>
 
-            <div className="mt-auto flex flex-wrap items-center gap-x-4 pt-2">
+            <div className="divider mt-3 flex flex-wrap items-center gap-x-4 border-t border-dashed px-1 pt-1">
               <button
                 type="button"
                 onClick={() => onOpenProject(project)}
@@ -97,7 +96,7 @@ export function ProjectShowcase({
       </div>
 
       <section aria-labelledby="commercial-title" className="mt-12">
-        <h3 id="commercial-title" className="text-xl font-bold">Commercial work</h3>
+        <h3 id="commercial-title" className="display-title">Commercial work</h3>
         <p className="supporting-text mt-2 text-sm">Closed-source client and employer projects.</p>
         <div className="mt-4 grid gap-x-8 gap-y-5 md:grid-cols-2">
           {COMMERCIAL_HIGHLIGHTS.map((item) => (

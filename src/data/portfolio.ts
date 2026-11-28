@@ -37,12 +37,12 @@ export const AUDIENCE_PRESETS: AudiencePreset[] = [
   {
     id: 'client',
     label: 'Business / Freelance Client',
-    headline: 'Mobile apps and backend APIs',
+    headline: { text: 'Mobile apps and', emphasis: 'backend', ending: 'APIs' },
     subcopy:
       'I build Flutter apps, Laravel APIs and custom web or desktop tools.',
-    primaryCtaLabel: 'Estimate a Project',
+    primaryCtaLabel: 'Estimate a project',
     primaryCtaAction: 'estimate',
-    secondaryCtaLabel: 'WhatsApp Directly',
+    secondaryCtaLabel: 'WhatsApp directly',
     secondaryCtaHref: `https://wa.me/${PROFILE.whatsappNumber}?text=${encodeURIComponent(
       "Hi Azrin, I saw your portfolio and I'd like to discuss a software project."
     )}`,
@@ -55,7 +55,7 @@ export const AUDIENCE_PRESETS: AudiencePreset[] = [
   {
     id: 'researcher',
     label: 'PhD / EdTech Researcher',
-    headline: 'Unity and AR prototypes for education',
+    headline: { text: 'Unity and AR prototypes for education' },
     subcopy:
       'I build virtual science labs, Vuforia AR math activities and Malay and English AI tutors for Malaysian researchers and education teams.',
     primaryCtaLabel: 'See EdTech & AR Demos',
@@ -71,7 +71,7 @@ export const AUDIENCE_PRESETS: AudiencePreset[] = [
   {
     id: 'recruiter',
     label: 'Hiring Manager',
-    headline: 'Software developer for web, mobile and Unity',
+    headline: { text: 'Software developer for web, mobile and Unity' },
     subcopy:
       'Former Software / Unity Developer Officer at Hanana Academy (Jan 2024 – Nov 2026) and freelance Unity, Flutter & PHP/Laravel developer (Techies Inc 2019–2024 & independent contracts since 2018). Based in Kota Bharu, available immediately, and ready to relocate anywhere in Malaysia.',
     primaryCtaLabel: 'View Resume (PDF)',

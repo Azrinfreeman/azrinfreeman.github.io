@@ -41,7 +41,7 @@ export function BackendPlayground() {
 
       <div className="panel mt-5 grid min-w-0 md:grid-cols-2">
         <form
-          className="grid min-w-0 content-start gap-3 p-4 sm:p-6"
+          className="grid min-w-0 content-start gap-3 rounded-t-[inherit] bg-[var(--bg-canvas)] p-4 sm:p-6 md:rounded-tr-none md:rounded-l-[inherit]"
           onSubmit={(event) => {
             event.preventDefault();
             setResult(api.send(endpoint, body));
@@ -85,7 +85,9 @@ export function BackendPlayground() {
           <div role="status" className="mt-2 text-sm">
             {result ? (
               <>
-                <p className="font-mono font-semibold">{result.status} {result.reason}</p>
+                <p data-tone={result.status < 400 ? 'ok' : 'error'} className="response-status inline-block rounded-full px-3 py-1 font-mono font-semibold">
+                  {result.status} {result.reason}
+                </p>
                 <p className="supporting-text mt-2">{result.explanation}</p>
               </>
             ) : (
@@ -95,7 +97,7 @@ export function BackendPlayground() {
           {result && (
             <>
               <p className="supporting-text mt-4 break-all font-mono text-sm">Content-Type: application/json</p>
-              <pre className="divider mt-2 max-h-64 overflow-auto rounded-md border bg-[var(--bg-canvas)] p-3 text-sm whitespace-pre-wrap break-words" tabIndex={0} aria-label="JSON response">
+              <pre className="code-surface divider mt-2 max-h-64 overflow-auto rounded-xl border p-3 text-sm whitespace-pre-wrap break-words" tabIndex={0} aria-label="JSON response">
                 {JSON.stringify(result.body, null, 2)}
               </pre>
             </>

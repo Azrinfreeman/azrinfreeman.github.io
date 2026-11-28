@@ -54,7 +54,11 @@ export interface ProjectItem {
 export interface AudiencePreset {
   id: AudienceMode;
   label: string;
-  headline: string;
+  headline: {
+    text: string;
+    emphasis?: string;
+    ending?: string;
+  };
   subcopy: string;
   primaryCtaLabel: string;
   primaryCtaAction: 'estimate' | 'edtech' | 'resume';

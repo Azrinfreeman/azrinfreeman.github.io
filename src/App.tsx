@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BackendPlayground } from './components/BackendPlayground';
 import { ContactFooter } from './components/ContactFooter';
 import { HeroShowreel } from './components/HeroShowreel';
@@ -18,11 +18,7 @@ import type {
 } from './types';
 
 function readInitialTheme(): ThemeMode {
-  try {
-    return localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
-  } catch {
-    return 'dark';
-  }
+  return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 }
 
 export function App() {
@@ -33,16 +29,16 @@ export function App() {
   const [currency, setCurrency] = useState<Currency>('RM');
   const [estimatorType, setEstimatorType] = useState<EstimatorProjectType>('api-stripe');
 
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
+  const handleToggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+    setTheme(nextTheme);
     try {
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('theme', nextTheme);
     } catch {
-      // Ignore storage failures
+      // The current page can still switch themes without browser storage.
     }
-  }, [theme]);
+  };
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -80,7 +76,7 @@ export function App() {
       </a>
       <Navbar
         theme={theme}
-        onToggleTheme={() => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))}
+        onToggleTheme={handleToggleTheme}
       />
 
       <main id="main-content" tabIndex={-1}>
@@ -106,12 +102,14 @@ export function App() {
           onEstimateService={handleEstimateType}
         />
 
-        <ScopeEstimator
-          selectedType={estimatorType}
-          onChangeType={setEstimatorType}
-          currency={currency}
-          onChangeCurrency={setCurrency}
-        />
+        <div className="section-tint divider border-t">
+          <ScopeEstimator
+            selectedType={estimatorType}
+            onChangeType={setEstimatorType}
+            currency={currency}
+            onChangeCurrency={setCurrency}
+          />
+        </div>
 
         <ProcessAndStack />
       </main>

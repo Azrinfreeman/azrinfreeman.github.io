@@ -6,11 +6,14 @@ export function ProcessAndStack() {
       <div className="page-width grid gap-9 md:grid-cols-2 md:gap-12">
         <div>
           <h2 className="section-title">How I work</h2>
-          <ol className="mt-5 list-decimal space-y-4 pl-6 marker:font-semibold">
+          <ol className="mt-5 space-y-4" role="list">
             {WORKFLOW_STEPS.map((item) => (
-              <li key={item.step} className="pl-1">
-                <h3 className="font-bold">{item.title}</h3>
-                <p className="supporting-text mt-1 text-sm leading-relaxed">{item.detail}</p>
+              <li key={item.step} className="grid grid-cols-[auto_1fr] items-start gap-3">
+                <span className="section-tint grid size-8 place-items-center rounded-full text-sm font-semibold">{Number(item.step)}</span>
+                <div>
+                  <h3 className="font-bold">{item.title}</h3>
+                  <p className="supporting-text mt-1 text-sm leading-relaxed">{item.detail}</p>
+                </div>
               </li>
             ))}
           </ol>

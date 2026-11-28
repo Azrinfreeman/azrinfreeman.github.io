@@ -64,7 +64,7 @@ export function ProjectModal({ project, onClose, onEstimateSimilar }: ProjectMod
         <header className="divider sticky top-0 z-10 flex items-start justify-between gap-3 border-b bg-[var(--bg-surface)] px-4 py-3 sm:px-6">
           <div className="min-w-0">
             <p className="supporting-text text-sm">{project.categoryLabel}</p>
-            <h2 id="project-modal-title" className="mt-1 text-xl leading-tight font-bold sm:text-2xl">
+            <h2 id="project-modal-title" className="display-title mt-1">
               {project.title}
             </h2>
           </div>
@@ -153,13 +153,13 @@ export function ProjectModal({ project, onClose, onEstimateSimilar }: ProjectMod
           )}
 
           {(project.disclosureNote || project.aiDirectedNote) && (
-            <div className="divider mt-4 space-y-1 border-l-2 pl-3 text-sm leading-relaxed">
+            <div className="section-tint mt-4 space-y-1 rounded-xl p-3 text-sm leading-relaxed">
               {project.disclosureNote && <p>{project.disclosureNote}</p>}
               {project.aiDirectedNote && <p>{project.aiDirectedNote}</p>}
             </div>
           )}
 
-          <div className="divider mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t pt-4">
+          <div className="divider mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-dashed pt-4">
             <button type="button" onClick={() => onEstimateSimilar(project.similarEstimateType)} className="button button-primary">
               Estimate a similar build
             </button>

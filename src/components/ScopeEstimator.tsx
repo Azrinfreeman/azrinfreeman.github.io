@@ -152,7 +152,7 @@ export function ScopeEstimator({
         </div>
 
         <section aria-labelledby="estimate-summary" className="panel min-w-0 p-4 sm:p-6">
-          <h3 id="estimate-summary" className="text-xl font-bold">Project estimate</h3>
+          <h3 id="estimate-summary" className="display-title">Project estimate</h3>
           <dl className="mt-4 grid gap-2" aria-live="polite" aria-atomic="true">
             <div className="flex flex-wrap justify-between gap-x-4 gap-y-1 text-sm">
               <dt className="supporting-text">Scope</dt>
@@ -162,9 +162,9 @@ export function ScopeEstimator({
               <dt className="supporting-text">Timeline</dt>
               <dd className="font-semibold">{tierData.timeline}</dd>
             </div>
-            <div className="divider mt-2 border-t pt-3">
+            <div className="divider mt-2 border-t border-dashed pt-3">
               <dt className="supporting-text text-sm">Estimated range</dt>
-              <dd className="quote-amount mt-1 text-2xl leading-tight font-bold sm:text-3xl" data-testid="estimator-price">{priceRange}</dd>
+              <dd className="quote-amount mt-1" data-testid="estimator-price">{priceRange}</dd>
             </div>
           </dl>
           <p className="supporting-text mt-2 text-sm">I confirm a fixed quote after reviewing your requirements.</p>
