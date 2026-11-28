@@ -1,4 +1,3 @@
-const intentionalCiBreak: number = "this fails tsc";
 import { useEffect, useState } from 'react';
 import { BackendPlayground } from './components/BackendPlayground';
 import { ContactFooter } from './components/ContactFooter';
